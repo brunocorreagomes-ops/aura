@@ -27,7 +27,16 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: |
+          # Extrai o nome do repositório para definir o base path
+          REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
+          # Se o repositório terminar em .github.io, o base path é /
+          if [[ "$REPO_NAME" == *".github.io" ]]; then
+            export VITE_BASE_PATH="/"
+          else
+            export VITE_BASE_PATH="/$REPO_NAME/"
+          fi
+          npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
