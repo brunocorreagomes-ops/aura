@@ -45,13 +45,13 @@ export function MusicForm() {
               transition={{ duration: 0.5 }}
             >
               <div className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-5 flex justify-center items-center gap-3">
-                Começar Agora
+                O Primeiro Passo
               </div>
               <h2 className="font-serif text-4xl md:text-[3.5rem] font-light leading-[1.1] mb-5">
-                Conte Sua <em className="italic text-gold">História</em>
+                Pronto para <em className="italic text-gold">emocionar</em> quem você ama?
               </h2>
               <p className="text-[0.95rem] text-white/50 leading-relaxed mb-12">
-                Preencha abaixo e transformaremos seus sentimentos em uma canção que vai durar para sempre.
+                Não se preocupe com as palavras perfeitas agora. Apenas nos dê o ponto de partida e nossos especialistas cuidarão de todo o resto.
               </p>
 
               <form onSubmit={handleSubmit} className="text-left space-y-6 md:space-y-7">

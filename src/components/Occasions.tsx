@@ -54,55 +54,58 @@ export function Occasions() {
 
 export function Pricing() {
   return (
-    <section id="precos" className="px-6 md:px-12 py-24 content-visibility-auto">
+    <section id="precos" className="px-6 md:px-12 py-24 content-visibility-auto bg-black-pure">
       <div className="max-w-[1000px] mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-5 flex items-center gap-3"
-        >
-          <div className="w-[30px] h-[1px] bg-gold" />
-          Investimento
-        </motion.div>
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="font-serif text-4xl md:text-[3.5rem] font-light leading-[1.1] mb-5"
-        >
-          O Presente <em className="italic text-gold">Definitivo</em>
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-[0.9rem] text-white/50 mt-5 mb-12 leading-relaxed max-w-[560px]"
-        >
-          Contratar músicos, estúdio e produção para uma canção exclusiva custaria facilmente <s className="text-white/30">mais de R$ 1.500,00</s> e levaria semanas.<br />
-          Com a AuraSong, você não pagará nem uma fração disso.
-        </motion.p>
+        <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-5 flex justify-center items-center gap-3"
+          >
+            <div className="w-[30px] h-[1px] bg-gold" />
+            Investimento no Legado
+            <div className="w-[30px] h-[1px] bg-gold" />
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-serif text-4xl md:text-[3.5rem] font-light leading-[1.1] mb-5"
+          >
+            O Presente que <em className="italic text-gold">Dura Para Sempre</em>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[1rem] text-white/50 mt-5 leading-relaxed max-w-[650px] mx-auto"
+          >
+            Contratar uma banda e estúdio custaria mais de <s className="text-white/30">R$ 2.500,00</s>. <br />
+            Nós democratizamos a arte, mantendo a alma e a qualidade de rádio.
+          </motion.p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="border border-gold/12 p-12 relative bg-white/[0.02]"
+            className="border border-gold/10 p-12 relative bg-white/[0.01] hover:border-gold/30 transition-all"
           >
-            <div className="text-[0.7rem] tracking-[0.3em] uppercase text-white/50 mb-5">Essencial</div>
+            <div className="text-[0.7rem] tracking-[0.3em] uppercase text-white/40 mb-5">Plano Essencial</div>
             <div className="font-serif text-[3.5rem] font-light text-gold leading-none mb-2">
               <sup className="text-2xl align-top mt-3 inline-block">R$</sup>97
             </div>
-            <div className="text-[0.8rem] text-white/50 mb-8">à vista · ou 12x de R$ 9,40</div>
-            <ul className="space-y-2.5 mb-9">
-              {["1 canção original personalizada", "Entrega em até 5 dias úteis", "Arquivo MP3 em alta qualidade", "1 revisão gratuita", "Garantia total de 7 dias"].map((f, i) => (
-                <li key={i} className="text-[0.85rem] text-cream-dark flex items-center gap-2.5 border-b border-white/5 pb-2.5">
-                  <span className="text-gold text-[0.5rem]">✦</span> {f}
+            <div className="text-[0.8rem] text-white/40 mb-8">Ideal para quem não tem pressa</div>
+            <ul className="space-y-4 mb-10">
+              {["1 canção original personalizada", "Entrega em até 5 dias úteis", "Arquivo MP3 Alta Qualidade", "1 revisão gratuita", "Garantia de 7 dias"].map((f, i) => (
+                <li key={i} className="text-[0.9rem] text-cream/70 flex items-center gap-3">
+                  <span className="text-gold">✦</span> {f}
                 </li>
               ))}
             </ul>
-            <a href="#criar" className="block text-center border border-gold text-gold py-3.5 text-[0.75rem] tracking-[0.2em] uppercase transition-all hover:bg-gold hover:text-black-pure">
+            <a href="#criar" className="block text-center border border-gold/40 text-gold py-4 text-[0.8rem] tracking-[0.2em] uppercase font-bold transition-all hover:bg-gold hover:text-black-pure">
               Escolher Essencial
             </a>
           </motion.div>
@@ -111,24 +114,25 @@ export function Pricing() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="border border-gold p-12 relative bg-gold/[0.06]"
+            className="border-2 border-gold p-12 relative bg-gold/[0.03] shadow-[0_0_50px_rgba(201,169,110,0.1)]"
           >
-            <div className="absolute -top-[1px] right-7 bg-gold text-black-pure text-[0.65rem] tracking-[0.2em] uppercase px-3.5 py-1.5 font-medium">Mais Escolhido</div>
-            <div className="text-[0.7rem] tracking-[0.3em] uppercase text-white/50 mb-5">Premium</div>
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-black-pure text-[0.65rem] tracking-[0.2em] uppercase px-6 py-2 font-bold">Mais Vendido & Rápido</div>
+            <div className="text-[0.7rem] tracking-[0.3em] uppercase text-gold mb-5">Plano Premium</div>
             <div className="font-serif text-[3.5rem] font-light text-gold leading-none mb-2">
-              <sup className="text-2xl align-top mt-3 inline-block">R$</sup>127
+              <sup className="text-2xl align-top mt-3 inline-block">R$</sup>147
             </div>
-            <div className="text-[0.8rem] text-white/50 mb-8">à vista · ou 12x de R$ 10,60</div>
-            <ul className="space-y-2.5 mb-9">
-              {["1 canção original personalizada", "Entrega em até 24 horas", "Arquivo MP3 + WAV masterizado", "Revisões ilimitadas", "Lyric Video para Reels/TikTok", "Arte da Letra enquadrável (PDF)", "Garantia total de 30 dias"].map((f, i) => (
-                <li key={i} className="text-[0.85rem] text-cream-dark flex items-center gap-2.5 border-b border-white/5 pb-2.5">
-                  <span className="text-gold text-[0.5rem]">✦</span> {f}
+            <div className="text-[0.8rem] text-white/50 mb-8">Para quem quer o melhor hoje</div>
+            <ul className="space-y-4 mb-10">
+              {["Entrega Prioritária (24 horas)", "Masterização de Estúdio (WAV)", "Revisões Ilimitadas", "Lyric Video Exclusivo", "Arte da Letra (PDF)", "Garantia Estendida 30 dias"].map((f, i) => (
+                <li key={i} className="text-[0.9rem] text-cream flex items-center gap-3">
+                  <span className="text-gold">✦</span> {f}
                 </li>
               ))}
             </ul>
-            <a href="#criar" className="block text-center bg-gold text-black-pure py-3.5 text-[0.75rem] tracking-[0.2em] uppercase transition-all hover:bg-gold-light">
+            <a href="#criar" className="block text-center bg-gold text-black-pure py-4 text-[0.8rem] tracking-[0.2em] uppercase font-bold transition-all hover:bg-gold-light hover:shadow-lg">
               Escolher Premium
             </a>
+            <p className="text-[0.6rem] text-center mt-4 text-gold/60 uppercase tracking-widest">Apenas 5 vagas restantes para hoje</p>
           </motion.div>
         </div>
       </div>
@@ -138,7 +142,7 @@ export function Pricing() {
 
 export function Guarantee() {
   return (
-    <section className="bg-black-soft px-6 md:px-12 py-24 content-visibility-auto">
+    <section className="bg-black-soft px-6 md:px-12 py-24 content-visibility-auto border-t border-gold/10">
       <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
@@ -146,10 +150,10 @@ export function Guarantee() {
           viewport={{ once: true }}
           className="flex justify-center"
         >
-          <div className="w-[200px] h-[200px] border-2 border-gold rounded-full flex flex-col items-center justify-center text-center p-6 relative">
-            <div className="absolute inset-2 border border-gold/30 rounded-full" />
-            <div className="font-serif text-5xl font-light text-gold leading-none">100<span className="text-2xl">%</span></div>
-            <div className="text-[0.65rem] tracking-[0.15em] uppercase text-white/50 leading-tight mt-2">Garantia<br />Lágrimas<br />de Alegria</div>
+          <div className="w-[240px] h-[240px] border-2 border-gold rounded-full flex flex-col items-center justify-center text-center p-6 relative shadow-[0_0_60px_rgba(201,169,110,0.1)]">
+            <div className="absolute inset-2 border border-gold/30 rounded-full animate-pulse" />
+            <div className="font-serif text-6xl font-light text-gold leading-none">100<span className="text-2xl">%</span></div>
+            <div className="text-[0.7rem] tracking-[0.2em] uppercase text-white/60 leading-tight mt-4 font-bold">Risco Zero<br />Absoluto</div>
           </div>
         </motion.div>
         
@@ -161,40 +165,40 @@ export function Guarantee() {
             className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-5 flex items-center gap-3"
           >
             <div className="w-[30px] h-[1px] bg-gold" />
-            Risco Zero
+            Garantia de Arrepios
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-4xl md:text-[3.5rem] font-light leading-[1.1] mb-4"
+            className="font-serif text-4xl md:text-[3.5rem] font-light leading-[1.1] mb-6"
           >
-            Sua <em className="italic text-gold">Satisfação</em><br />ou Seu Dinheiro
+            Sua <em className="italic text-gold">Emoção</em><br />ou Seu Investimento de Volta
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[0.9rem] text-white/50 leading-relaxed mb-4"
+            className="text-[1rem] text-white/50 leading-relaxed mb-6"
           >
-            Temos absoluta certeza do poder da nossa música. Se a canção entregue não capturar perfeitamente a essência da sua história, devolvemos 100% do seu dinheiro.
+            Temos tanta confiança no impacto emocional da nossa música que o risco é 100% nosso. Se a canção não capturar perfeitamente a essência da sua história, você tem 30 dias para solicitar o reembolso total.
           </motion.p>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[0.9rem] text-white/50 leading-relaxed mb-8"
+            className="text-[0.9rem] text-white/40 leading-relaxed mb-10 italic"
           >
-            Sem formulários longos, sem burocracia, sem questionamentos. O risco é inteiramente nosso.
+            "Sem burocracia, sem perguntas difíceis. Nossa missão é a sua satisfação e a emoção de quem você ama."
           </motion.p>
           <motion.a 
             href="#criar" 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block bg-gold text-black-pure px-10 py-4 text-[0.8rem] tracking-[0.2em] uppercase font-medium transition-all hover:bg-gold-light"
+            className="inline-block bg-gold text-black-pure px-12 py-5 text-[0.85rem] tracking-[0.2em] uppercase font-bold transition-all hover:bg-gold-light"
           >
-            Criar Com Segurança
+            Criar Com Risco Zero
           </motion.a>
         </div>
       </div>

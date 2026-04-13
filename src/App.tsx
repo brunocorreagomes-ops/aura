@@ -7,15 +7,15 @@ import React, { Suspense, lazy } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import SEO from './components/SEO';
 import { Navbar, Hero } from './components/Hero';
-import { TrustBar, HowItWorks } from './components/TrustBar';
+import { TrustBar, HowItWorks, AudioSamples } from './components/TrustBar';
+import { PainSection, SolutionSection, ImmersionSection, FinalCTA } from './components/SalesSections';
 
 // Lazy load below-the-fold components
-const AudioSamples = lazy(() => import('./components/TrustBar').then(m => ({ default: m.AudioSamples })));
+const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
 const Occasions = lazy(() => import('./components/Occasions').then(m => ({ default: m.Occasions })));
 const Pricing = lazy(() => import('./components/Occasions').then(m => ({ default: m.Pricing })));
 const Guarantee = lazy(() => import('./components/Occasions').then(m => ({ default: m.Guarantee })));
 const MusicForm = lazy(() => import('./components/Footer').then(m => ({ default: m.MusicForm })));
-const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
 const FAQ = lazy(() => import('./components/Footer').then(m => ({ default: m.FAQ })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 
@@ -31,14 +31,18 @@ export default function App() {
         <main>
           <Hero />
           <TrustBar />
+          <PainSection />
+          <SolutionSection />
           <HowItWorks />
           
           <Suspense fallback={<SectionLoader />}>
-            <About />
+            <ImmersionSection />
             <AudioSamples />
+            <About />
             <Occasions />
             <Pricing />
             <Guarantee />
+            <FinalCTA />
             <MusicForm />
             <FAQ />
           </Suspense>

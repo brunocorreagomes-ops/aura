@@ -30,45 +30,36 @@ export function TrustBar() {
 
 export function HowItWorks() {
   const steps = [
-    {
-      num: "01",
-      title: "Compartilhe a Magia",
-      desc: "Responda a apenas cinco perguntas simples sobre a pessoa que receberá o presente. Conte os apelidos, as datas marcantes e as memórias mais felizes."
+    { 
+      num: "01", 
+      title: "Conte a História", 
+      desc: "Você preenche um formulário simples com os nomes, datas e os detalhes que só vocês conhecem." 
     },
-    {
-      num: "02",
-      title: "Deixe a Arte Acontecer",
-      desc: "Nossa tecnologia de ponta une forças com curadores musicais para transformar seus sentimentos em versos impecáveis e uma melodia arrepiante."
+    { 
+      num: "02", 
+      title: "Nós Compomos", 
+      desc: "Nossos compositores e tecnologia criam a letra, melodia e arranjo perfeitos para o seu momento." 
     },
-    {
-      num: "03",
-      title: "A Emoção em Suas Mãos",
-      desc: "Receba a canção finalizada direto no seu e-mail, pronta para dar o play, compartilhar nas redes e causar emoção profunda em quem você ama."
-    }
+    { 
+      num: "03", 
+      title: "Você Emociona", 
+      desc: "Em até 24h você recebe o link da música masterizada para fazer a surpresa mais marcante da vida dela." 
+    },
   ];
 
   return (
-    <section className="bg-black-soft px-6 md:px-12 py-24 content-visibility-auto">
+    <section className="bg-black-pure px-6 md:px-12 py-24 border-t border-gold/10 content-visibility-auto">
       <div className="max-w-[1100px] mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-5 flex items-center gap-3"
-        >
-          <div className="w-[30px] h-[1px] bg-gold" />
-          O Processo
-        </motion.div>
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="font-serif text-4xl md:text-[3.5rem] font-light leading-[1.1] mb-5"
-        >
-          Como a Magia <em className="italic text-gold">Acontece</em>
-        </motion.h2>
+        <div className="text-center mb-20">
+          <div className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-5 flex justify-center items-center gap-3">
+            <div className="w-[30px] h-[1px] bg-gold" />
+            Simplicidade Total
+            <div className="w-[30px] h-[1px] bg-gold" />
+          </div>
+          <h2 className="font-serif text-4xl md:text-5xl font-light">3 Passos Para o <em className="italic text-gold">Presente Perfeito</em></h2>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {steps.map((step, i) => (
             <motion.div 
               key={i}
@@ -76,11 +67,11 @@ export function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.2 }}
-              className="bg-gold/[0.04] border border-gold/10 p-12 transition-all hover:bg-gold/[0.08] hover:border-gold/30 hover:-translate-y-1"
+              className="relative group p-10 bg-white/[0.02] border border-gold/5 hover:border-gold/20 transition-all"
             >
-              <div className="font-serif text-6xl font-light text-gold/15 leading-none mb-6">{step.num}</div>
-              <h3 className="font-serif text-2xl font-normal mb-3 text-cream">{step.title}</h3>
-              <p className="text-[0.88rem] leading-relaxed text-white/50">{step.desc}</p>
+              <div className="text-6xl font-serif text-gold/10 absolute -top-4 -left-2 group-hover:text-gold/20 transition-colors">{step.num}</div>
+              <h3 className="font-serif text-2xl mb-4 text-cream relative z-10">{step.title}</h3>
+              <p className="text-[0.95rem] text-white/50 leading-relaxed relative z-10">{step.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -91,10 +82,10 @@ export function HowItWorks() {
 
 export function AudioSamples() {
   const samples = [
-    { genre: "Sertanejo Romântico", title: "A Primeira Vez que Te Vi", desc: "Criada para um pedido de casamento surpresa" },
-    { genre: "MPB Acústico", title: "Minha Mãe, Meu Lar", desc: "Homenagem para o Dia das Mães" },
-    { genre: "Pop Emocional", title: "10 Anos ao Seu Lado", desc: "Aniversário de casamento inesquecível" },
-    { genre: "Gospel Suave", title: "Luz que Nunca se Apaga", desc: "Em memória de alguém especial" },
+    { genre: "Sertanejo Romântico", title: "A Primeira Vez que Te Vi", desc: "Criada para um pedido de casamento surpresa que parou um restaurante." },
+    { genre: "MPB Acústico", title: "Minha Mãe, Meu Lar", desc: "Uma homenagem de 60 anos que fez a família inteira se abraçar." },
+    { genre: "Pop Emocional", title: "10 Anos ao Seu Lado", desc: "Aniversário de casamento onde cada verso era uma memória real." },
+    { genre: "Gospel Suave", title: "Luz que Nunca se Apaga", desc: "Um tributo emocionante para honrar um legado que jamais será esquecido." },
   ];
 
   return (
