@@ -54,8 +54,8 @@ export function Occasions() {
 
 export function Pricing() {
   return (
-    <section id="precos" className="px-6 md:px-12 py-24 content-visibility-auto bg-black-pure">
-      <div className="max-w-[1000px] mx-auto">
+    <section id="precos" className="px-6 md:px-12 py-24 content-visibility-auto bg-[#0d0d0d]">
+      <div className="max-w-[1100px] mx-auto">
         <div className="text-center mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -64,75 +64,96 @@ export function Pricing() {
             className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-5 flex justify-center items-center gap-3"
           >
             <div className="w-[30px] h-[1px] bg-gold" />
-            Investimento no Legado
+            Planos e Investimento
             <div className="w-[30px] h-[1px] bg-gold" />
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-4xl md:text-[3.5rem] font-light leading-[1.1] mb-5"
+            className="font-serif text-4xl md:text-[3.5rem] font-light leading-[1.1] mb-5 text-white"
           >
-            O Presente que <em className="italic text-gold">Dura Para Sempre</em>
+            Escolha Como Quer <em className="italic text-gold">Surpreender</em>
           </motion.h2>
-          <motion.p 
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Basic Plan */}
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[1rem] text-white/50 mt-5 leading-relaxed max-w-[650px] mx-auto"
-          >
-            Contratar uma banda e estúdio custaria mais de <s className="text-white/30">R$ 2.500,00</s>. <br />
-            Nós democratizamos a arte, mantendo a alma e a qualidade de rádio.
-          </motion.p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="border border-gold/10 p-12 relative bg-white/[0.01] hover:border-gold/30 transition-all"
+            className="border border-gold/10 p-10 relative bg-white/[0.01] flex flex-col"
           >
             <div className="text-[0.7rem] tracking-[0.3em] uppercase text-white/40 mb-5">Plano Essencial</div>
             <div className="font-serif text-[3.5rem] font-light text-gold leading-none mb-2">
               <sup className="text-2xl align-top mt-3 inline-block">R$</sup>97
             </div>
             <div className="text-[0.8rem] text-white/40 mb-8">Ideal para quem não tem pressa</div>
-            <ul className="space-y-4 mb-10">
-              {["1 canção original personalizada", "Entrega em até 5 dias úteis", "Arquivo MP3 Alta Qualidade", "1 revisão gratuita", "Garantia de 7 dias"].map((f, i) => (
+            <ul className="space-y-4 mb-10 flex-grow">
+              {["1 canção original personalizada", "Entrega em até 5 dias úteis", "Arquivo MP3 Alta Qualidade", "1 revisão gratuita"].map((f, i) => (
                 <li key={i} className="text-[0.9rem] text-cream/70 flex items-center gap-3">
                   <span className="text-gold">✦</span> {f}
                 </li>
               ))}
             </ul>
             <a href="#criar" className="block text-center border border-gold/40 text-gold py-4 text-[0.8rem] tracking-[0.2em] uppercase font-bold transition-all hover:bg-gold hover:text-black-pure">
-              Escolher Essencial
+              Começar Agora
             </a>
           </motion.div>
 
+          {/* Most Chosen Plan */}
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="border-2 border-gold p-12 relative bg-gold/[0.03] shadow-[0_0_50px_rgba(201,169,110,0.1)]"
+            className="border-2 border-gold p-10 relative bg-gold/[0.03] shadow-[0_0_50px_rgba(201,169,110,0.1)] flex flex-col scale-105 z-10"
           >
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-black-pure text-[0.65rem] tracking-[0.2em] uppercase px-6 py-2 font-bold">Mais Vendido & Rápido</div>
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-black-pure text-[0.65rem] tracking-[0.2em] uppercase px-6 py-2 font-black">MAIS ESCOLHIDO</div>
             <div className="text-[0.7rem] tracking-[0.3em] uppercase text-gold mb-5">Plano Premium</div>
             <div className="font-serif text-[3.5rem] font-light text-gold leading-none mb-2">
               <sup className="text-2xl align-top mt-3 inline-block">R$</sup>147
             </div>
-            <div className="text-[0.8rem] text-white/50 mb-8">Para quem quer o melhor hoje</div>
-            <ul className="space-y-4 mb-10">
-              {["Entrega Prioritária (24 horas)", "Masterização de Estúdio (WAV)", "Revisões Ilimitadas", "Lyric Video Exclusivo", "Arte da Letra (PDF)", "Garantia Estendida 30 dias"].map((f, i) => (
+            <div className="text-[0.8rem] text-white/50 mb-8 font-bold">Entrega em até 48h</div>
+            <ul className="space-y-4 mb-10 flex-grow">
+              {["Entrega em 48 horas", "Masterização de Estúdio (WAV)", "Revisões Ilimitadas", "Lyric Video Exclusivo", "Arte da Letra (PDF)"].map((f, i) => (
                 <li key={i} className="text-[0.9rem] text-cream flex items-center gap-3">
                   <span className="text-gold">✦</span> {f}
                 </li>
               ))}
             </ul>
-            <a href="#criar" className="block text-center bg-gold text-black-pure py-4 text-[0.8rem] tracking-[0.2em] uppercase font-bold transition-all hover:bg-gold-light hover:shadow-lg">
-              Escolher Premium
+            <a href="#criar" className="block text-center bg-gold text-black-pure py-4 text-[0.8rem] tracking-[0.2em] uppercase font-black transition-all hover:bg-gold-light">
+              Garantir Minha Música
             </a>
-            <p className="text-[0.6rem] text-center mt-4 text-gold/60 uppercase tracking-widest">Apenas 5 vagas restantes para hoje</p>
+            <div className="flex justify-center gap-4 mt-6 opacity-40 grayscale">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_Pix.png" className="h-4" alt="Pix" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" className="h-4" alt="Visa" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" className="h-4" alt="Mastercard" />
+            </div>
+          </motion.div>
+
+          {/* Anchoring Plan */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="border border-gold/10 p-10 relative bg-white/[0.01] flex flex-col"
+          >
+            <div className="text-[0.7rem] tracking-[0.3em] uppercase text-white/40 mb-5">Plano VIP Experience</div>
+            <div className="font-serif text-[3.5rem] font-light text-gold leading-none mb-2">
+              <sup className="text-2xl align-top mt-3 inline-block">R$</sup>247
+            </div>
+            <div className="text-[0.8rem] text-white/40 mb-8">A experiência definitiva</div>
+            <ul className="space-y-4 mb-10 flex-grow">
+              {["Tudo do Premium", "Entrega em 24 horas", "Consultoria via WhatsApp", "Vídeo de Reação Editado", "Quadro com QR Code (Digital)"].map((f, i) => (
+                <li key={i} className="text-[0.9rem] text-cream/70 flex items-center gap-3">
+                  <span className="text-gold">✦</span> {f}
+                </li>
+              ))}
+            </ul>
+            <a href="#criar" className="block text-center border border-gold/40 text-gold py-4 text-[0.8rem] tracking-[0.2em] uppercase font-bold transition-all hover:bg-gold hover:text-black-pure">
+              Escolher VIP
+            </a>
           </motion.div>
         </div>
       </div>
