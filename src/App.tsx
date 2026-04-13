@@ -10,13 +10,14 @@ import { Navbar, Hero } from './components/Hero';
 import { TrustBar, HowItWorks, AudioSamples } from './components/TrustBar';
 import { PainSection, SolutionSection, ImmersionSection, FinalCTA } from './components/SalesSections';
 import { SocialProof } from './components/SocialProof';
-import { FloatingElements, FAQ } from './components/FloatingElements';
+import { FloatingElements } from './components/FloatingElements';
 
 // Lazy load below-the-fold components
 const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
 const Occasions = lazy(() => import('./components/Occasions').then(m => ({ default: m.Occasions })));
 const Pricing = lazy(() => import('./components/Occasions').then(m => ({ default: m.Pricing })));
 const Guarantee = lazy(() => import('./components/Occasions').then(m => ({ default: m.Guarantee })));
+const FAQ = lazy(() => import('./components/FAQ').then(m => ({ default: m.FAQ })));
 const MusicForm = lazy(() => import('./components/Footer').then(m => ({ default: m.MusicForm })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 

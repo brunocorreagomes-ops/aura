@@ -1,37 +1,45 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Heart, Clock, MessageSquare, Star, ArrowRight } from 'lucide-react';
+import { Heart, Clock, MessageSquare, Star, ArrowRight, Gift, Sparkles } from 'lucide-react';
 
 export function PainSection() {
   return (
-    <section className="bg-black-pure px-6 md:px-12 py-24 border-t border-gold/10">
+    <section className="bg-[#0d0d0d] px-6 md:px-12 py-32 border-t border-white/5">
       <div className="max-w-[1000px] mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-8"
+        >
+          O Dilema do Presente Perfeito
+        </motion.div>
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-serif text-3xl md:text-5xl font-light leading-tight mb-12"
+          className="font-serif text-3xl md:text-6xl font-light leading-tight mb-16 text-white"
         >
-          O tempo passa, as memórias desbotam... <br />
-          <span className="text-gold italic">e as palavras ficam presas.</span>
+          Flores murcham, joias se perdem... <br />
+          <span className="text-gold italic">mas uma música é para sempre.</span>
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           {[
             {
-              title: "O Arrependimento do Silêncio",
-              desc: "Quantas vezes você quis dizer o quanto alguém é importante, mas não encontrou o momento ou as palavras certas?",
-              icon: <MessageSquare className="text-gold mb-4" size={28} />
+              title: "O Presente que não é 'Coisa'",
+              desc: "Sua mãe já tem de tudo. O que ela realmente deseja é sentir que a história dela é importante e que você se orgulha de ser filho(a) dela.",
+              icon: <Gift className="text-gold mb-6" size={32} />
             },
             {
-              title: "Presentes que Viram Lixo",
-              desc: "Flores murcham, perfumes acabam, roupas saem de moda. O que você deu no ano passado ainda significa algo hoje?",
-              icon: <Clock className="text-gold mb-4" size={28} />
+              title: "A Emoção que Fica",
+              desc: "Diferente de um objeto, uma música é um gatilho emocional. Daqui a 10 anos, ela dará o play e sentirá exatamente o que sentiu hoje.",
+              icon: <Sparkles className="text-gold mb-6" size={32} />
             },
             {
-              title: "A Distância Emocional",
-              desc: "A rotina nos afasta de quem amamos. Sem um gesto marcante, os laços se tornam apenas automáticos.",
-              icon: <Heart className="text-gold mb-4" size={28} />
+              title: "Palavras que Curam",
+              desc: "Às vezes, a rotina nos impede de dizer o óbvio. Uma música Aura diz tudo o que seu coração sente, mas sua voz não consegue expressar.",
+              icon: <Heart className="text-gold mb-6" size={32} />
             }
           ].map((item, i) => (
             <motion.div 
@@ -40,11 +48,11 @@ export function PainSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.2 }}
-              className="p-8 bg-white/[0.02] border border-gold/5 hover:border-gold/20 transition-all"
+              className="p-10 bg-white/[0.02] border border-white/5 hover:border-gold/20 transition-all group"
             >
-              {item.icon}
-              <h3 className="font-serif text-xl text-cream mb-4">{item.title}</h3>
-              <p className="text-sm text-white/50 leading-relaxed">{item.desc}</p>
+              <div className="group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
+              <h3 className="font-serif text-2xl text-white mb-5">{item.title}</h3>
+              <p className="text-[0.95rem] text-white/40 leading-relaxed font-light">{item.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -55,54 +63,54 @@ export function PainSection() {
 
 export function SolutionSection() {
   return (
-    <section className="bg-black-soft px-6 md:px-12 py-24 overflow-hidden">
-      <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section className="bg-[#0d0d0d] px-6 md:px-12 py-32 overflow-hidden border-t border-white/5">
+      <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <div className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-5">A Solução AuraSong</div>
-          <h2 className="font-serif text-4xl md:text-5xl font-light mb-8 leading-tight">
-            Nós transformamos seus <em className="italic text-gold">sentimentos</em> em uma obra de arte sonora.
+          <div className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-8">A Experiência Aura</div>
+          <h2 className="font-serif text-4xl md:text-6xl font-light mb-10 leading-tight text-white">
+            Nós transformamos seus <em className="italic text-gold">sentimentos</em> em arte sonora.
           </h2>
-          <p className="text-white/60 mb-8 leading-relaxed">
-            Não é apenas uma música. É a sua história, seus detalhes e suas memórias narradas em uma composição profissional que toca a alma. 
+          <p className="text-white/50 mb-10 text-lg leading-relaxed font-light">
+            Não entregamos apenas um arquivo de áudio. Entregamos um momento de conexão profunda. Cada verso é lapidado para refletir a essência da sua mãe.
           </p>
-          <ul className="space-y-4 mb-10">
+          <ul className="space-y-6 mb-12">
             {[
-              "Letras baseadas em fatos reais da sua vida",
-              "Produção musical de nível internacional",
-              "Vozes emocionantes que dão vida ao seu texto",
-              "Entrega recorde para presentes de última hora"
+              "Composição autoral baseada no seu briefing",
+              "Produção musical com instrumentistas reais",
+              "Vozes profissionais selecionadas pela emoção",
+              "Lyric Video exclusivo incluso no pacote"
             ].map((text, i) => (
-              <li key={i} className="flex items-center gap-3 text-sm text-cream/80">
-                <Star size={14} className="text-gold" /> {text}
+              <li key={i} className="flex items-center gap-4 text-[1rem] text-white/70 font-light">
+                <div className="w-1.5 h-1.5 rounded-full bg-gold" /> {text}
               </li>
             ))}
           </ul>
-          <a href="#criar" className="inline-flex items-center gap-3 text-gold border-b border-gold/30 pb-1 hover:border-gold transition-all uppercase tracking-widest text-[0.7rem]">
-            Ver como funciona <ArrowRight size={14} />
+          <a href="#criar" className="inline-flex items-center gap-4 text-gold border-b border-gold/20 pb-2 hover:border-gold transition-all uppercase tracking-[0.2em] text-[0.75rem] font-bold">
+            Ver Planos Disponíveis <ArrowRight size={16} />
           </a>
         </motion.div>
         
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           className="relative"
         >
-          <div className="aspect-square bg-gold/5 border border-gold/10 flex items-center justify-center p-12">
+          <div className="aspect-[4/5] bg-white/[0.02] border border-white/10 flex items-center justify-center p-16 relative z-10">
              <div className="text-center">
-                <div className="text-gold font-serif text-6xl mb-4 italic">"</div>
-                <p className="font-serif text-2xl text-cream italic leading-relaxed">
-                  "Eu não sabia como dizer que a amava depois de 20 anos. A música disse tudo por mim. Ela chorou, eu chorei. Foi o melhor dia das nossas vidas."
+                <div className="text-gold font-serif text-7xl mb-8 italic opacity-30">"</div>
+                <p className="font-serif text-2xl md:text-3xl text-white italic leading-relaxed font-light">
+                  "Eu não sabia como dizer que a amava depois de tantos anos. A música disse tudo por mim. Ela chorou, eu chorei. Foi o Dia das Mães mais lindo das nossas vidas."
                 </p>
-                <div className="mt-8 text-gold tracking-widest uppercase text-[0.7rem]">— Ricardo M., Cliente AuraSong</div>
+                <div className="mt-12 text-gold tracking-[0.3em] uppercase text-[0.7rem] font-bold">— Mariana L., Cliente Aura</div>
              </div>
           </div>
-          <div className="absolute -top-4 -right-4 w-24 h-24 border-t border-right border-gold/20" />
-          <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b border-left border-gold/20" />
+          <div className="absolute -top-6 -right-6 w-32 h-32 border-t border-r border-gold/20" />
+          <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b border-l border-gold/20" />
         </motion.div>
       </div>
     </section>
@@ -111,27 +119,26 @@ export function SolutionSection() {
 
 export function ImmersionSection() {
   return (
-    <section className="relative py-32 px-6 overflow-hidden bg-black-pure">
-      <div className="absolute inset-0 opacity-20">
-        <img src="https://picsum.photos/seed/emotion/1920/1080?blur=10" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+    <section className="relative py-40 px-6 overflow-hidden bg-[#0d0d0d]">
+      <div className="absolute inset-0 opacity-10">
+        <img src="https://picsum.photos/seed/motherslove/1920/1080?blur=10" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
       </div>
-      <div className="relative z-10 max-w-[800px] mx-auto text-center">
+      <div className="relative z-10 max-w-[900px] mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-serif text-4xl md:text-6xl font-light mb-8 leading-tight">
-            Feche os olhos e <br />
-            <em className="italic text-gold">imagine a cena...</em>
+          <h2 className="font-serif text-4xl md:text-7xl font-light mb-10 leading-tight text-white">
+            Imagine o momento em que <br />
+            <em className="italic text-gold">ela apertar o play...</em>
           </h2>
-          <p className="text-xl text-white/70 font-light leading-relaxed mb-12">
-            Vocês estão sentados, o celular na mão, o silêncio toma conta. Você aperta o play. <br /><br />
-            A melodia começa suave. De repente, ela ouve o próprio nome. Ela ouve aquele detalhe daquele jantar de 5 anos atrás. O arrepio é imediato. <br /><br />
-            O olhar dela encontra o seu. Não precisa de mais nada. <strong>O mundo parou para ouvir vocês.</strong>
+          <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed mb-16 max-w-[700px] mx-auto">
+            O silêncio da sala, a melodia começando suave... e de repente, ela ouve a própria história. O arrepio é imediato. O olhar dela encontra o seu. <br /><br />
+            <strong>O mundo para por 3 minutos apenas para vocês dois.</strong>
           </p>
-          <a href="#criar" className="bg-gold text-black-pure px-12 py-5 uppercase tracking-[0.2em] font-bold hover:bg-gold-light transition-all">
-            Eu Quero Viver Esse Momento
+          <a href="#criar" className="inline-block bg-gold text-black-pure px-16 py-6 text-[0.9rem] tracking-[0.3em] uppercase font-black hover:bg-gold-light transition-all shadow-[0_20px_50px_rgba(201,169,110,0.3)]">
+            Quero Criar Esse Momento
           </a>
         </motion.div>
       </div>
@@ -141,19 +148,24 @@ export function ImmersionSection() {
 
 export function FinalCTA() {
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-black-pure to-black-soft text-center">
+    <section className="py-32 px-6 bg-[#0d0d0d] text-center border-t border-white/5">
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.98 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="max-w-[800px] mx-auto border border-gold/20 p-16 bg-white/[0.01]"
+        className="max-w-[900px] mx-auto border border-gold/20 p-20 bg-white/[0.01] relative overflow-hidden"
       >
-        <h2 className="font-serif text-4xl md:text-5xl mb-8">Não deixe para <em className="italic text-gold">amanhã</em> o que pode ser eterno hoje.</h2>
-        <p className="text-white/50 mb-12 text-lg">
-          As vagas para entrega em 24h são limitadas devido ao nosso processo artesanal de composição. Garanta a sua agora.
+        <div className="absolute top-0 right-0 p-4">
+          <Sparkles className="text-gold/20" size={40} />
+        </div>
+        <h2 className="font-serif text-4xl md:text-6xl mb-10 text-white leading-tight">
+          Não deixe para <em className="italic text-gold">depois</em> o que pode ser <em className="italic text-gold">eterno</em> hoje.
+        </h2>
+        <p className="text-white/40 mb-14 text-lg font-light max-w-[600px] mx-auto">
+          Devido ao nosso processo artesanal de composição, as vagas para o Dia das Mães são extremamente limitadas. Garanta a sua agora.
         </p>
-        <a href="#criar" className="inline-block bg-gold text-black-pure px-12 py-5 text-[0.9rem] tracking-[0.2em] uppercase font-bold hover:bg-gold-light transition-all shadow-[0_15px_40px_rgba(201,169,110,0.2)]">
-          Começar Minha Música
+        <a href="#criar" className="inline-block bg-gold text-black-pure px-16 py-6 text-[0.9rem] tracking-[0.3em] uppercase font-black hover:bg-gold-light transition-all shadow-[0_20px_50px_rgba(201,169,110,0.3)]">
+          Encomendar Música Agora
         </a>
       </motion.div>
     </section>

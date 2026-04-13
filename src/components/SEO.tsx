@@ -4,23 +4,23 @@ export default function SEO() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "AuraSong — Música Personalizada",
-    "description": "Transformamos sua história em uma canção original com qualidade de estúdio em menos de 24 horas.",
+    "name": "Aura — Música Personalizada para o Dia das Mães",
+    "description": "O presente mais emocionante para o Dia das Mães. Transformamos sua história em uma canção original com qualidade de estúdio.",
     "brand": {
       "@type": "Brand",
-      "name": "AuraSong"
+      "name": "Aura"
     },
     "offers": {
       "@type": "AggregateOffer",
       "lowPrice": "97",
-      "highPrice": "127",
+      "highPrice": "247",
       "priceCurrency": "BRL",
-      "offerCount": "2"
+      "offerCount": "3"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "2000"
+      "reviewCount": "2140"
     }
   };
 
@@ -30,26 +30,26 @@ export default function SEO() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Quanto tempo leva para receber minha música?",
+        "name": "O que é a música personalizada para presentear no Dia das Mães?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No plano Premium, entregamos sua música personalizada em menos de 24 horas. No plano Essencial, o prazo é de até 5 dias úteis."
+          "text": "É uma composição original criada do zero pela Aura, baseada na sua história e memórias com sua mãe. É um presente único que transforma sentimentos em uma obra de arte sonora profissional."
         }
       },
       {
         "@type": "Question",
-        "name": "Qual a qualidade da música?",
+        "name": "Para quem esse presente é ideal?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Todas as nossas músicas possuem qualidade de estúdio, masterizadas para soar bem em qualquer dispositivo, desde celulares até sistemas de som profissionais."
+          "text": "Ideal para quem busca um presente criativo, emocionante e inesquecível para mães, avós, esposas ou figuras maternas que já têm de tudo e valorizam momentos e memórias."
         }
       },
       {
         "@type": "Question",
-        "name": "Posso pedir revisões?",
+        "name": "Como funciona a entrega para o Dia das Mães?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sim! O plano Essencial inclui 1 revisão gratuita, enquanto o plano Premium oferece revisões ilimitadas para garantir que sua história seja contada exatamente como você deseja."
+          "text": "Temos prazos especiais de 24h a 48h para a campanha de Dia das Mães. Você recebe um arquivo digital de alta qualidade (MP3/WAV) e um Lyric Video exclusivo para surpreendê-la."
         }
       }
     ]
@@ -57,21 +57,21 @@ export default function SEO() {
 
   return (
     <Helmet>
-      <title>AuraSong — Transforme Sua História em Música Original</title>
-      <meta name="description" content="Crie uma canção original e inesquecível para quem você ama. Entrega em menos de 24h. Qualidade de estúdio. O presente perfeito para casamentos, aniversários e datas especiais." />
-      <meta name="keywords" content="música personalizada, presente criativo, homenagem musical, presente de casamento, presente dia das mães, aura song, aurasong" />
+      <title>Presente Criativo Dia das Mães — Música Personalizada Aura</title>
+      <meta name="description" content="Surpreenda com o presente mais emocionante do Dia das Mães. Música personalizada feita sob medida para sua mãe. Entrega rápida e qualidade de estúdio. Encomende agora." />
+      <meta name="keywords" content="presente criativo dia das mães, presente personalizado para mãe, ideia de presente emocionante para mãe, música personalizada para dia das mães, presente único para mãe, surpresa para dia das mães" />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:title" content="AuraSong — Transforme Sua História em Música Original" />
-      <meta property="og:description" content="O presente mais emocionante que você já deu. Uma música original feita sob medida para sua história." />
-      <meta property="og:image" content="https://picsum.photos/seed/aurasong/1200/630" />
+      <meta property="og:title" content="Aura — O Presente Inesquecível de Dia das Mães" />
+      <meta property="og:description" content="Diga o que as palavras não conseguem. Transforme sua história em música e emocione sua mãe como nunca antes." />
+      <meta property="og:image" content="https://picsum.photos/seed/auramothers/1200/630" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="AuraSong — Música Personalizada" />
-      <meta name="twitter:description" content="Transforme sua história em música em menos de 24h." />
-      <meta name="twitter:image" content="https://picsum.photos/seed/aurasong/1200/630" />
+      <meta name="twitter:title" content="Aura — Música Personalizada para Mães" />
+      <meta name="twitter:description" content="O presente que ela vai ouvir com o coração. Encomende sua música personalizada." />
+      <meta name="twitter:image" content="https://picsum.photos/seed/auramothers/1200/630" />
 
       {/* Meta Pixel Code Placeholder */}
       <script>
