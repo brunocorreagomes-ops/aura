@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap');
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "DM Sans", sans-serif;
+  
+  --color-gold: #C9A96E;
+  --color-gold-light: #E8D5B0;
+  --color-gold-dark: #8B6D3F;
+  --color-black-pure: #0A0806;
+  --color-black-soft: #100D09;
+  --color-cream: #F7F2EA;
+  --color-cream-dark: #EDE5D6;
+}
+
+:root {
+  --black: #0A0806;
+  --white: #FDFAF5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* Grain Overlay */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.5;
+  /* Optimization: ensure it doesn't trigger layout */
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Performance Utilities */
+.optimize-gpu {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
+}

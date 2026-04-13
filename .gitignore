@@ -1,0 +1,18 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+
+# Build artifacts
+*.tsbuildinfo
