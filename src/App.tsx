@@ -15,6 +15,7 @@ const Occasions = lazy(() => import('./components/Occasions').then(m => ({ defau
 const Pricing = lazy(() => import('./components/Occasions').then(m => ({ default: m.Pricing })));
 const Guarantee = lazy(() => import('./components/Occasions').then(m => ({ default: m.Guarantee })));
 const MusicForm = lazy(() => import('./components/Footer').then(m => ({ default: m.MusicForm })));
+const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
 const FAQ = lazy(() => import('./components/Footer').then(m => ({ default: m.FAQ })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 
@@ -33,6 +34,7 @@ export default function App() {
           <HowItWorks />
           
           <Suspense fallback={<SectionLoader />}>
+            <About />
             <AudioSamples />
             <Occasions />
             <Pricing />

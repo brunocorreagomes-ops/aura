@@ -11,6 +11,13 @@ export function Navbar() {
       <div className="font-serif text-2xl font-light tracking-[0.15em] text-gold">
         Aura<span className="italic">Song</span>
       </div>
+      
+      <div className="hidden md:flex items-center gap-10">
+        <a href="#sobre" className="text-[0.7rem] tracking-[0.2em] uppercase text-white/70 hover:text-gold transition-colors">Sobre Nós</a>
+        <a href="#amostras" className="text-[0.7rem] tracking-[0.2em] uppercase text-white/70 hover:text-gold transition-colors">Amostras</a>
+        <a href="#precos" className="text-[0.7rem] tracking-[0.2em] uppercase text-white/70 hover:text-gold transition-colors">Preços</a>
+      </div>
+
       <a 
         href="#criar" 
         className="text-[0.75rem] tracking-[0.2em] uppercase text-black-pure bg-gold px-6 py-2.5 font-medium transition-all hover:bg-gold-light"

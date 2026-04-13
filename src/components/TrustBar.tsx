@@ -98,7 +98,7 @@ export function AudioSamples() {
   ];
 
   return (
-    <section className="px-6 md:px-12 py-24 content-visibility-auto">
+    <section id="amostras" className="px-6 md:px-12 py-24 content-visibility-auto">
       <div className="max-w-[1100px] mx-auto">
         <div className="max-w-[560px] mb-16">
           <motion.div 

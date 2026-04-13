@@ -2,14 +2,18 @@
 
 AuraSong é uma plataforma premium que transforma memórias e sentimentos em canções originais e personalizadas. Utilizando inteligência artificial de ponta e curadoria musical, criamos o presente definitivo para momentos inesquecíveis.
 
-## 🚀 Funcionalidades
+## 🚀 Deploy no GitHub Pages
 
-- **Personalização Total**: Músicas criadas com base em histórias reais, nomes e memórias.
-- **Diversidade de Estilos**: Sertanejo, MPB, Pop, Gospel, Pagode e muito mais.
-- **Entrega Rápida**: Receba sua canção masterizada em até 24 horas (Plano Premium).
-- **Design Responsivo**: Experiência otimizada para desktop e dispositivos móveis.
-- **SEO Otimizado**: Estrutura preparada para mecanismos de busca.
-- **Interface Premium**: Design sofisticado com animações fluidas e rolagem suave.
+Este projeto está configurado para deploy automático no GitHub Pages via GitHub Actions.
+
+1.  **Suba o código para o seu repositório no GitHub.**
+2.  **Ative o GitHub Pages**:
+    *   Vá em **Settings** > **Pages**.
+    *   Em **Build and deployment** > **Source**, selecione **GitHub Actions**.
+3.  **Configuração de Subdiretório** (opcional):
+    *   Se o seu site não estiver na raiz (ex: `usuario.github.io/projeto/`), adicione uma variável de ambiente `VITE_BASE_PATH` com o valor `/projeto/` nos segredos do seu repositório ou no arquivo de workflow.
+
+O site possui um sistema de roteamento SPA compatível com o GitHub Pages através dos arquivos `404.html` e scripts no `index.html`.
 
 ## 🛠️ Tecnologias Utilizadas
 

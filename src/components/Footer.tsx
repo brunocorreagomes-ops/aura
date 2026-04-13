@@ -305,6 +305,7 @@ export function Footer() {
         Aura<span className="italic">Song</span>
       </div>
       <div className="flex gap-8">
+        <a href="#sobre" className="text-[0.75rem] tracking-[0.1em] text-white/50 hover:text-gold transition-colors">Sobre Nós</a>
         <a href="#" className="text-[0.75rem] tracking-[0.1em] text-white/50 hover:text-gold transition-colors">Política de Privacidade</a>
         <a href="#" className="text-[0.75rem] tracking-[0.1em] text-white/50 hover:text-gold transition-colors">Termos de Uso</a>
         <a href="#" className="text-[0.75rem] tracking-[0.1em] text-white/50 hover:text-gold transition-colors">Contato</a>
