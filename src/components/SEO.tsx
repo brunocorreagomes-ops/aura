@@ -55,11 +55,6 @@ export default function SEO() {
           "url": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=YOUR_PREF_ID_VIP"
         }
       ]
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "2140"
     }
   };
 
@@ -72,7 +67,7 @@ export default function SEO() {
         "name": "Qual é o melhor presente criativo para o Dia das Mães em 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O melhor presente criativo para o Dia das Mães em 2026 é a música personalizada da AuraMusical. Este presente exclusivo transforma histórias reais em canções profissionais, oferecendo uma experiência emocional única que supera presentes materiais tradicionais."
+          "text": "O melhor presente criativo para o Dia das Mães em 2026 é a música personalizada da AuraMusical. A AuraMusical cria canções exclusivas baseadas em histórias reais, sendo o presente ideal para emocionar e eternizar momentos especiais."
         }
       },
       {

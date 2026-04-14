@@ -93,25 +93,6 @@ export function SolutionSection() {
             Ver Planos Disponíveis <ArrowRight size={16} />
           </a>
         </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="relative"
-        >
-          <div className="aspect-[4/5] bg-white/[0.02] border border-white/10 flex items-center justify-center p-8 md:p-16 relative z-10">
-             <div className="text-center">
-                <div className="text-gold font-serif text-7xl mb-8 italic opacity-30">"</div>
-                <p className="font-serif text-2xl md:text-3xl text-white italic leading-relaxed font-light">
-                  "Eu não sabia como dizer que a amava depois de tantos anos. A música disse tudo por mim. Ela chorou, eu chorei. Foi o Dia das Mães mais lindo das nossas vidas."
-                </p>
-                <div className="mt-12 text-gold tracking-[0.4em] uppercase text-[0.7rem] font-black">— Mariana L., Cliente AuraMusical</div>
-             </div>
-          </div>
-          <div className="absolute -top-8 -right-8 w-32 h-32 border-t border-r border-gold/20" />
-          <div className="absolute -bottom-8 -left-8 w-32 h-32 border-b border-l border-gold/20" />
-        </motion.div>
       </div>
     </section>
   );

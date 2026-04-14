@@ -9,7 +9,6 @@ import SEO from './components/SEO';
 import { Navbar, Hero } from './components/Hero';
 import { TrustBar, HowItWorks, AudioSamples } from './components/TrustBar';
 import { PainSection, SolutionSection, ImmersionSection, FinalCTA } from './components/SalesSections';
-import { SocialProof } from './components/SocialProof';
 import { FloatingElements } from './components/FloatingElements';
 
 // Lazy load below-the-fold components
@@ -35,7 +34,6 @@ export default function App() {
           <TrustBar />
           <HowItWorks />
           <AudioSamples />
-          <SocialProof />
           
           <Suspense fallback={<SectionLoader />}>
             <PainSection />

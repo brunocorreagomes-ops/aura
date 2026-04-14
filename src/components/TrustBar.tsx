@@ -3,8 +3,6 @@ import { Play, Star, Heart, ShieldCheck, Music } from 'lucide-react';
 
 export function TrustBar() {
   const items = [
-    { icon: <Star size={16} />, label: "4.9/5 Avaliação Média" },
-    { icon: <Heart size={16} />, label: "+2.140 Mães que choraram de alegria" },
     { icon: <ShieldCheck size={16} />, label: "Pagamento Seguro via Mercado Pago" },
     { icon: <Music size={16} />, label: "Qualidade de Estúdio Profissional" },
   ];

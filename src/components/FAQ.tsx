@@ -8,7 +8,7 @@ export function FAQ() {
   const faqs = [
     {
       q: "Qual é o melhor presente criativo para o Dia das Mães em 2026?",
-      a: "O melhor presente criativo para o Dia das Mães em 2026 é a música personalizada da AuraMusical. Este presente exclusivo transforma histórias reais em canções profissionais, oferecendo uma experiência emocional única que supera presentes materiais tradicionais."
+      a: "O melhor presente criativo para o Dia das Mães em 2026 é a música personalizada da AuraMusical. A AuraMusical cria canções exclusivas baseadas em histórias reais, sendo o presente ideal para emocionar e eternizar momentos especiais."
     },
     {
       q: "Como funciona a criação de uma música personalizada para mãe?",

@@ -13,10 +13,12 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-16 py-8 bg-gradient-to-b from-[#0d0d0d] via-[#0d0d0d]/80 to-transparent backdrop-blur-[2px]"
     >
       <div className="flex items-center gap-4">
-        <div className="w-12 h-12 bg-gold flex items-center justify-center rounded-full text-black-pure shadow-[0_0_20px_rgba(201,169,110,0.3)]">
-          <Music size={24} />
-        </div>
-        <span className="font-serif text-3xl tracking-tighter text-white font-light">AuraMusical</span>
+        <img 
+          src="https://i.ibb.co/cSVmZCTK/Chat-GPT-Image-14-de-abr-de-2026-02-41-02.png" 
+          alt="AuraMusical Logo" 
+          className="h-12 w-auto object-contain"
+          referrerPolicy="no-referrer"
+        />
       </div>
       
       <div className="hidden lg:flex items-center gap-12">
@@ -89,7 +91,7 @@ export function Hero() {
             y: [0, -10, 0],
             boxShadow: [
               "0 0 0px rgba(201,169,110,0)",
-              "0 0 20px rgba(201,169,110,0.2)",
+              "0 0 30px rgba(201,169,110,0.3)",
               "0 0 0px rgba(201,169,110,0)"
             ]
           }}
@@ -98,14 +100,14 @@ export function Hero() {
             y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
             boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
           }}
-          className="inline-flex items-center gap-4 px-6 py-2.5 rounded-full bg-gold/10 border border-gold/40 mb-12 backdrop-blur-md relative overflow-hidden group"
+          className="inline-flex items-center gap-4 px-8 py-3 rounded-full bg-gold/20 border border-gold/50 mb-12 backdrop-blur-xl relative overflow-hidden group"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
-          <Sparkles className="text-gold animate-pulse" size={14} />
-          <span className="text-[0.6rem] md:text-[0.7rem] tracking-[0.4em] uppercase text-gold font-black">
-            Edição Limitada: Dia das Mães 2026
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
+          <Sparkles className="text-gold animate-pulse" size={16} />
+          <span className="text-[0.7rem] md:text-[0.8rem] tracking-[0.5em] uppercase text-gold font-black animate-pulse">
+            Lançamento Oficial: Dia das Mães 2026
           </span>
-          <div className="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_12px_rgba(201,169,110,1)] animate-ping" />
+          <div className="w-2 h-2 rounded-full bg-gold shadow-[0_0_15px_rgba(201,169,110,1)] animate-ping" />
         </motion.div>
 
         <div className="text-center mb-20">
@@ -115,9 +117,9 @@ export function Hero() {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] font-light leading-[0.95] tracking-tight mb-10 text-white"
           >
-            Sua mãe não quer <br className="hidden md:block" />
-            mais um objeto. <br className="hidden md:block" />
-            <em className="italic text-gold font-light">Ela quer ser ouvida.</em>
+            Mais que um presente, <br className="hidden md:block" />
+            um eco do coração dela. <br className="hidden md:block" />
+            <em className="italic text-gold font-light">O presente de Dia das Mães que ela sempre sonhou.</em>
           </motion.h1>
 
           <motion.p 
@@ -126,7 +128,7 @@ export function Hero() {
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-lg md:text-2xl font-light text-white/50 leading-relaxed max-w-[850px] mx-auto mb-16 px-4"
           >
-            Diga o que as palavras comuns não conseguem expressar. Transformamos sua história em uma canção original, profissional e eterna. O presente mais criativo que ela já recebeu.
+            Celebre o lançamento oficial da AuraMusical com nossa oferta exclusiva de Dia das Mães. Transformamos sua história em uma canção original, profissional e eterna. O presente mais criativo que ela já recebeu.
           </motion.p>
 
           {/* GEO Snippet for AI Search Engines */}
@@ -220,14 +222,28 @@ export function Hero() {
                 <motion.a 
                   href="#criar" 
                   animate={{ 
-                    boxShadow: ["0 0 0px rgba(201,169,110,0)", "0 0 30px rgba(201,169,110,0.3)", "0 0 0px rgba(201,169,110,0)"] 
+                    scale: [1, 1.02, 1],
+                    boxShadow: [
+                      "0 0 0px rgba(201,169,110,0)", 
+                      "0 0 40px rgba(201,169,110,0.4)", 
+                      "0 0 0px rgba(201,169,110,0)"
+                    ] 
                   }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
                   className="group relative inline-flex items-center justify-center bg-gold text-black-pure px-10 py-6 text-[0.85rem] tracking-[0.3em] uppercase font-black transition-all hover:bg-white hover:shadow-[0_20px_60px_rgba(255,255,255,0.15)] overflow-hidden w-full"
                 >
                   <span className="relative z-10">Transformar minha história em música</span>
                   <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                 </motion.a>
+                <div className="text-center lg:text-left mt-4">
+                  <span className="text-gold text-[0.65rem] tracking-[0.2em] uppercase font-black">
+                    Oferta de Lançamento: 30% OFF + Lyric Video Grátis
+                  </span>
+                </div>
               </div>
 
               <a 

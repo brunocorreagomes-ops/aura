@@ -119,10 +119,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-20 mb-24">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-12 h-12 bg-gold flex items-center justify-center rounded-full text-black-pure shadow-[0_0_20px_rgba(201,169,110,0.3)]">
-                <Music2 size={24} />
-              </div>
-              <span className="font-serif text-3xl tracking-tighter text-white">AuraMusical</span>
+              <img 
+                src="https://i.ibb.co/cSVmZCTK/Chat-GPT-Image-14-de-abr-de-2026-02-41-02.png" 
+                alt="AuraMusical Logo" 
+                className="h-12 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <p className="text-white/30 max-w-[400px] leading-relaxed text-lg font-light">
               Transformamos sentimentos em obras de arte sonoras. Cada música é única, feita à mão para eternizar seus momentos mais preciosos.

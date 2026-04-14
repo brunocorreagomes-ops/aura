@@ -29,11 +29,7 @@ export function About() {
               </p>
             </div>
             
-            <div className="grid grid-cols-2 gap-12 mt-16">
-              <div className="flex flex-col gap-2">
-                <div className="text-gold font-serif text-4xl font-light">2.1k+</div>
-                <div className="text-[0.65rem] uppercase tracking-[0.2em] text-white/30 font-bold">Mães Emocionadas</div>
-              </div>
+            <div className="grid grid-cols-1 gap-12 mt-16">
               <div className="flex flex-col gap-2">
                 <div className="text-gold font-serif text-4xl font-light">100%</div>
                 <div className="text-[0.65rem] uppercase tracking-[0.2em] text-white/30 font-bold">Composição Autoral</div>
