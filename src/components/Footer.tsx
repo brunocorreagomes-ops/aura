@@ -19,70 +19,70 @@ export function MusicForm() {
   };
 
   return (
-    <section id="criar" className="bg-[#0d0d0d] px-6 md:px-12 py-32 content-visibility-auto border-t border-white/5">
-      <div className="max-w-[800px] mx-auto">
+    <section id="criar" className="bg-[#0d0d0d] px-6 md:px-12 py-40 content-visibility-auto border-t border-white/5">
+      <div className="max-w-[900px] mx-auto">
         <AnimatePresence mode="wait">
           {status !== 'success' ? (
             <motion.div
               key="form"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white/[0.02] border border-white/5 p-12 md:p-20 relative overflow-hidden"
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-white/[0.01] border border-white/5 p-6 md:p-24 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 p-8 opacity-10">
-                <Sparkles size={120} className="text-gold" />
+              <div className="absolute top-0 right-0 p-12 opacity-5">
+                <Sparkles size={160} className="text-gold" />
               </div>
 
               <div className="relative z-10">
-                <div className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-8 flex items-center gap-4">
-                  <div className="w-8 h-[1px] bg-gold" />
-                  {step === 1 ? "Início da Jornada" : "A Alma da Música"}
+                <div className="text-[0.65rem] tracking-[0.5em] uppercase text-gold mb-10 flex items-center gap-6">
+                  <div className="w-12 h-[1px] bg-gold" />
+                  {step === 1 ? "Início da Homenagem" : "A Essência Dela"}
                 </div>
                 
-                <h2 className="font-serif text-4xl md:text-6xl font-light text-white mb-8 leading-tight">
-                  {step === 1 ? "O começo de algo" : "Agora a parte"} <em className="italic text-gold">{step === 1 ? "eterno" : "mágica"}</em>
+                <h2 className="font-serif text-4xl md:text-7xl font-light text-white mb-10 leading-tight">
+                  {step === 1 ? "Onde a homenagem" : "A alma da"} <em className="italic text-gold">{step === 1 ? "começa" : "música"}</em>
                 </h2>
                 
-                <p className="text-white/40 text-lg mb-12 font-light leading-relaxed">
+                <p className="text-white/40 text-xl mb-16 font-light leading-relaxed max-w-[600px]">
                   {step === 1 
                     ? "Preencha seus dados para iniciarmos o processo de criação da sua obra-prima para o Dia das Mães." 
                     : "Conte-nos os detalhes que farão ela chorar de alegria. Apelidos, memórias, o jeito dela..."}
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-10">
                   {step === 1 ? (
-                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-8">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="space-y-3">
-                          <label className="block text-[0.65rem] tracking-[0.2em] uppercase text-white/40 font-bold">Seu Nome Completo</label>
-                          <input required name="userName" type="text" placeholder="Ex: João Silva" className="w-full bg-white/[0.03] border border-white/10 text-white px-6 py-5 outline-none focus:border-gold/50 transition-all font-light" />
+                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-10">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div className="space-y-4">
+                          <label className="block text-[0.65rem] tracking-[0.3em] uppercase text-white/30 font-black">Seu Nome Completo</label>
+                          <input required name="userName" type="text" placeholder="Ex: João Silva" className="w-full bg-white/[0.02] border border-white/10 text-white px-8 py-6 outline-none focus:border-gold transition-all font-light text-lg" />
                         </div>
-                        <div className="space-y-3">
-                          <label className="block text-[0.65rem] tracking-[0.2em] uppercase text-white/40 font-bold">Seu WhatsApp</label>
-                          <input required name="userPhone" type="tel" placeholder="(00) 00000-0000" className="w-full bg-white/[0.03] border border-white/10 text-white px-6 py-5 outline-none focus:border-gold/50 transition-all font-light" />
+                        <div className="space-y-4">
+                          <label className="block text-[0.65rem] tracking-[0.3em] uppercase text-white/30 font-black">Seu WhatsApp</label>
+                          <input required name="userPhone" type="tel" placeholder="(00) 00000-0000" className="w-full bg-white/[0.02] border border-white/10 text-white px-8 py-6 outline-none focus:border-gold transition-all font-light text-lg" />
                         </div>
                       </div>
-                      <button type="submit" className="w-full bg-gold text-black-pure py-6 font-black uppercase tracking-[0.3em] text-[0.85rem] hover:bg-gold-light transition-all shadow-[0_15px_40px_rgba(201,169,110,0.2)]">
-                        Próximo Passo <Send size={16} className="inline ml-2" />
+                      <button type="submit" className="w-full bg-gold text-black-pure py-8 font-black uppercase tracking-[0.4em] text-[0.9rem] hover:bg-white transition-all shadow-[0_20px_50px_rgba(201,169,110,0.2)]">
+                        Próximo Passo <Send size={18} className="inline ml-3" />
                       </button>
                     </motion.div>
                   ) : (
-                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-8">
-                      <div className="space-y-3">
-                        <label className="block text-[0.65rem] tracking-[0.2em] uppercase text-white/40 font-bold">Nome da sua Mãe</label>
-                        <input required name="targetName" type="text" placeholder="Como ela se chama?" className="w-full bg-white/[0.03] border border-white/10 text-white px-6 py-5 outline-none focus:border-gold/50 transition-all font-light" />
+                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-10">
+                      <div className="space-y-4">
+                        <label className="block text-[0.65rem] tracking-[0.3em] uppercase text-white/30 font-black">Nome da sua Mãe</label>
+                        <input required name="targetName" type="text" placeholder="Como ela se chama?" className="w-full bg-white/[0.02] border border-white/10 text-white px-8 py-6 outline-none focus:border-gold transition-all font-light text-lg" />
                       </div>
-                      <div className="space-y-3">
-                        <label className="block text-[0.65rem] tracking-[0.2em] uppercase text-white/40 font-bold">A História (O que torna ela especial?)</label>
-                        <textarea required name="story" rows={5} placeholder="Ex: Ela ama girassóis, nosso apelido é..., ela sempre diz que..." className="w-full bg-white/[0.03] border border-white/10 text-white px-6 py-5 outline-none focus:border-gold/50 transition-all resize-none font-light leading-relaxed" />
+                      <div className="space-y-4">
+                        <label className="block text-[0.65rem] tracking-[0.3em] uppercase text-white/30 font-black">A História (O que torna ela especial?)</label>
+                        <textarea required name="story" rows={6} placeholder="Ex: Ela ama girassóis, nosso apelido é..., ela sempre diz que..." className="w-full bg-white/[0.02] border border-white/10 text-white px-8 py-6 outline-none focus:border-gold transition-all resize-none font-light leading-relaxed text-lg" />
                       </div>
-                      <div className="flex flex-col gap-4">
-                        <button type="submit" disabled={status === 'submitting'} className="w-full bg-gold text-black-pure py-6 font-black uppercase tracking-[0.3em] text-[0.85rem] hover:bg-gold-light transition-all shadow-[0_15px_40px_rgba(201,169,110,0.2)] disabled:opacity-50">
+                      <div className="flex flex-col gap-6">
+                        <button type="submit" disabled={status === 'submitting'} className="w-full bg-gold text-black-pure py-8 font-black uppercase tracking-[0.4em] text-[0.9rem] hover:bg-white transition-all shadow-[0_20px_50px_rgba(201,169,110,0.2)] disabled:opacity-50">
                           {status === 'submitting' ? "Sintonizando Emoções..." : "Finalizar e Criar Música"}
                         </button>
-                        <button type="button" onClick={() => setStep(1)} className="text-white/20 text-[0.65rem] uppercase tracking-[0.2em] hover:text-gold transition-colors font-bold">Voltar para etapa anterior</button>
+                        <button type="button" onClick={() => setStep(1)} className="text-white/20 text-[0.7rem] uppercase tracking-[0.3em] hover:text-gold transition-colors font-black">Voltar para etapa anterior</button>
                       </div>
                     </motion.div>
                   )}
@@ -94,16 +94,16 @@ export function MusicForm() {
               key="success"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="py-24 text-center"
+              className="py-32 text-center"
             >
-              <div className="w-24 h-24 bg-gold/10 text-gold rounded-full flex items-center justify-center mx-auto mb-10 border border-gold/20">
-                <CheckCircle2 size={48} />
+              <div className="w-32 h-32 bg-gold/5 text-gold rounded-full flex items-center justify-center mx-auto mb-12 border border-gold/10 shadow-[0_0_50px_rgba(201,169,110,0.2)]">
+                <CheckCircle2 size={60} />
               </div>
-              <h2 className="font-serif text-5xl text-white mb-6">História Recebida</h2>
-              <p className="text-white/40 text-xl font-light mb-12 max-w-[500px] mx-auto leading-relaxed">
-                Em instantes, um de nossos compositores entrará em contato via WhatsApp para validar os detalhes e iniciar a criação.
+              <h2 className="font-serif text-6xl text-white mb-8">História Recebida</h2>
+              <p className="text-white/40 text-2xl font-light mb-16 max-w-[600px] mx-auto leading-relaxed">
+                Em instantes, um de nossos compositores entrará em contato via WhatsApp para validar os detalhes e iniciar a criação da sua obra-prima.
               </p>
-              <button onClick={() => setStatus('idle')} className="text-gold border-b border-gold/20 pb-2 uppercase tracking-[0.2em] text-[0.75rem] font-black hover:border-gold transition-all">Criar outra homenagem</button>
+              <button onClick={() => setStatus('idle')} className="text-gold border-b border-gold/20 pb-2 uppercase tracking-[0.3em] text-[0.8rem] font-black hover:border-gold transition-all">Criar outra homenagem</button>
             </motion.div>
           )}
         </AnimatePresence>
@@ -122,7 +122,7 @@ export function Footer() {
               <div className="w-12 h-12 bg-gold flex items-center justify-center rounded-full text-black-pure shadow-[0_0_20px_rgba(201,169,110,0.3)]">
                 <Music2 size={24} />
               </div>
-              <span className="font-serif text-3xl tracking-tighter text-white">Aura</span>
+              <span className="font-serif text-3xl tracking-tighter text-white">AuraMusical</span>
             </div>
             <p className="text-white/30 max-w-[400px] leading-relaxed text-lg font-light">
               Transformamos sentimentos em obras de arte sonoras. Cada música é única, feita à mão para eternizar seus momentos mais preciosos.
@@ -158,7 +158,7 @@ export function Footer() {
         
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-white/20 text-[0.65rem] uppercase tracking-[0.3em] font-bold">
-            © 2024 Aura Studio. Todos os direitos reservados.
+            © 2026 AuraMusical Studio. Todos os direitos reservados.
           </p>
           <div className="flex gap-12">
             <a href="#" className="text-white/20 text-[0.6rem] uppercase tracking-[0.3em] hover:text-white transition-colors font-bold">Termos de Uso</a>

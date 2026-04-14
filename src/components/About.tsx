@@ -19,7 +19,7 @@ export function About() {
             </h2>
             <div className="space-y-8 text-white/50 leading-relaxed text-lg font-light">
               <p>
-                A Aura nasceu de uma provocação simples: como tornar um momento inesquecível algo que possa ser ouvido e sentido para sempre?
+                AuraMusical nasceu de uma provocação simples: como tornar um momento inesquecível algo que possa ser ouvido e sentido para sempre?
               </p>
               <p>
                 Acreditamos que cada história de amor, cada superação e cada laço familiar possui uma melodia própria. Nossa missão é capturar essa frequência única e traduzi-la em composições originais de altíssima qualidade.
@@ -51,17 +51,18 @@ export function About() {
             <div className="aspect-[4/5] relative z-10 overflow-hidden border border-white/5">
               <img 
                 src="https://picsum.photos/seed/music-studio-aura/800/1000" 
-                alt="Estúdio de Música Aura" 
+                alt="Estúdio de Música AuraMusical" 
+                loading="lazy"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gold/5 mix-blend-overlay" />
             </div>
             {/* Decorative elements */}
-            <div className="absolute -top-8 -right-8 w-full h-full border border-gold/10 -z-10" />
+            <div className="hidden md:block absolute -top-8 -right-8 w-full h-full border border-gold/10 -z-10" />
             <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-gold/5 blur-[100px] rounded-full" />
             
-            <div className="absolute -bottom-6 -right-6 bg-[#0d0d0d] border border-gold/20 p-8 z-20 max-w-[240px] shadow-2xl">
+            <div className="absolute -bottom-6 -right-6 bg-[#0d0d0d] border border-gold/20 p-6 md:p-8 z-20 max-w-[200px] md:max-w-[240px] shadow-2xl">
               <Sparkles className="text-gold mb-4" size={24} />
               <p className="text-white/70 text-sm font-light italic leading-relaxed">
                 "Cada nota é escolhida para vibrar na mesma frequência do seu coração."

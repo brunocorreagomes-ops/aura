@@ -33,9 +33,9 @@ export default function App() {
         <main>
           <Hero />
           <TrustBar />
-          <SocialProof />
           <HowItWorks />
           <AudioSamples />
+          <SocialProof />
           
           <Suspense fallback={<SectionLoader />}>
             <PainSection />

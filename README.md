@@ -1,6 +1,6 @@
-# AuraSong — Transforme Sua História em Música
+# AuraMusical — Transforme Sua História em Música
 
-AuraSong é uma plataforma premium que transforma memórias e sentimentos em canções originais e personalizadas. Utilizando inteligência artificial de ponta e curadoria musical, criamos o presente definitivo para momentos inesquecíveis.
+AuraMusical é uma plataforma premium que transforma memórias e sentimentos em canções originais e personalizadas. Utilizando inteligência artificial de ponta e curadoria musical, criamos o presente definitivo para momentos inesquecíveis.
 
 ## 🚀 Deploy no GitHub Pages
 
@@ -63,4 +63,4 @@ Os arquivos serão gerados na pasta `dist/`, prontos para serem hospedados em se
 Este projeto está sob a licença Apache-2.0. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
-Desenvolvido com ❤️ por AuraSong.
+Desenvolvido com ❤️ por AuraMusical.

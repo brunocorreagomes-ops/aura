@@ -11,16 +11,28 @@ export function Occasions() {
   ];
 
   return (
-    <section id="ocasioes" className="bg-[#0d0d0d] px-6 md:px-12 py-32 content-visibility-auto border-t border-white/5">
+    <section id="ocasioes" className="bg-[#0d0d0d] px-6 md:px-12 py-40 content-visibility-auto border-t border-white/5">
       <div className="max-w-[1100px] mx-auto">
-        <div className="text-center mb-20">
-          <div className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-6">Versatilidade Aura</div>
-          <h2 className="font-serif text-4xl md:text-6xl font-light text-white leading-tight">
-            Qual história <em className="italic text-gold">vamos eternizar?</em>
-          </h2>
+        <div className="text-center mb-24">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[0.65rem] tracking-[0.5em] uppercase text-gold mb-8 font-black"
+          >
+            Versatilidade AuraMusical
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-serif text-4xl md:text-7xl font-light text-white leading-tight"
+          >
+            O que o seu <em className="italic text-gold">coração</em> quer dizer?
+          </motion.h2>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
           {occasions.map((occ, i) => (
             <motion.a 
               key={i}
@@ -29,11 +41,11 @@ export function Occasions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 bg-white/[0.02] border border-white/5 text-center transition-all hover:bg-gold/[0.05] hover:border-gold/30 group"
+              className="p-10 bg-white/[0.01] border border-white/5 text-center transition-all duration-500 hover:bg-gold/[0.03] hover:border-gold/30 group"
             >
-              <span className="text-4xl mb-6 block group-hover:scale-110 transition-transform">{occ.icon}</span>
-              <div className="font-serif text-lg mb-3 text-white">{occ.name}</div>
-              <p className="text-[0.7rem] text-white/30 leading-relaxed uppercase tracking-widest">{occ.sub}</p>
+              <span className="text-5xl mb-8 block group-hover:scale-110 transition-transform duration-500">{occ.icon}</span>
+              <div className="font-serif text-xl mb-4 text-white font-light">{occ.name}</div>
+              <p className="text-[0.65rem] text-white/20 leading-relaxed uppercase tracking-[0.3em] font-black">{occ.sub}</p>
             </motion.a>
           ))}
         </div>
@@ -74,77 +86,89 @@ export function Pricing() {
   ];
 
   return (
-    <section id="precos" className="bg-[#0d0d0d] px-6 md:px-12 py-32 content-visibility-auto border-t border-white/5">
+    <section id="precos" className="bg-[#0d0d0d] px-6 md:px-12 py-40 content-visibility-auto border-t border-white/5">
       <div className="max-w-[1200px] mx-auto">
-        <div className="text-center mb-24">
-          <div className="text-[0.65rem] tracking-[0.4em] uppercase text-gold mb-6">Investimento em Memória</div>
-          <h2 className="font-serif text-4xl md:text-6xl font-light text-white mb-8">
+        <div className="text-center mb-32">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[0.65rem] tracking-[0.5em] uppercase text-gold mb-8 font-black"
+          >
+            Investimento em Memória
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-serif text-4xl md:text-7xl font-light text-white mb-10"
+          >
             Escolha como quer <em className="italic text-gold">surpreender</em>
-          </h2>
-          <p className="text-white/40 max-w-[600px] mx-auto text-lg font-light">
-            Três caminhos para criar o presente mais emocionante da vida dela. Todos com garantia de satisfação Aura.
+          </motion.h2>
+          <p className="text-white/40 max-w-[700px] mx-auto text-xl font-light leading-relaxed">
+            Três caminhos para criar o presente mais emocionante da vida dela. Todos com garantia de satisfação AuraMusical e pagamento seguro via Mercado Pago.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
           {plans.map((plan, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`relative p-12 flex flex-col ${
+              transition={{ delay: i * 0.2, duration: 0.8 }}
+              className={`relative p-8 md:p-14 flex flex-col transition-all duration-500 ${
                 plan.popular 
-                  ? 'bg-gold/[0.03] border-2 border-gold shadow-[0_0_60px_rgba(201,169,110,0.15)] scale-105 z-10' 
-                  : 'bg-white/[0.02] border border-white/5'
+                  ? 'bg-gold/[0.02] border-2 border-gold shadow-[0_0_80px_rgba(201,169,110,0.1)] scale-105 z-10' 
+                  : 'bg-white/[0.01] border border-white/5 hover:border-white/10'
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold text-black-pure text-[0.7rem] font-black px-6 py-2 uppercase tracking-widest">
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold text-black-pure text-[0.7rem] font-black px-8 py-2.5 uppercase tracking-[0.3em] shadow-2xl">
                   Mais Escolhido
                 </div>
               )}
               
-              <div className="text-[0.7rem] tracking-[0.3em] uppercase text-white/40 mb-8 font-bold">{plan.name}</div>
-              <div className="flex items-baseline gap-2 mb-4">
+              <div className="text-[0.7rem] tracking-[0.4em] uppercase text-white/30 mb-10 font-black">{plan.name}</div>
+              <div className="flex items-baseline gap-3 mb-6">
                 <span className="text-2xl text-gold font-light">R$</span>
-                <span className="text-7xl font-serif text-gold font-light">{plan.price}</span>
+                <span className="text-[5.5rem] font-serif text-gold font-light leading-none">{plan.price}</span>
               </div>
-              <p className="text-white/50 text-sm mb-10 font-light leading-relaxed">{plan.desc}</p>
+              <p className="text-white/40 text-base mb-12 font-light leading-relaxed">{plan.desc}</p>
               
-              <ul className="space-y-5 mb-12 flex-grow">
+              <ul className="space-y-6 mb-16 flex-grow">
                 {plan.features.map((f, idx) => (
-                  <li key={idx} className="flex items-start gap-4 text-[0.9rem] text-white/70 font-light">
-                    <Check size={16} className="text-gold mt-1 shrink-0" />
+                  <li key={idx} className="flex items-start gap-5 text-[1rem] text-white/60 font-light">
+                    <Check size={18} className="text-gold mt-1 shrink-0" />
                     <span>{f}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="space-y-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <input type="checkbox" id={`terms-${i}`} className="w-4 h-4 rounded border-white/10 bg-white/5 text-gold focus:ring-gold" required />
-                  <label htmlFor={`terms-${i}`} className="text-[0.65rem] text-white/30 uppercase tracking-widest leading-tight">
-                    Aceito os <a href="#termos" className="text-gold/60 underline">termos</a> e <a href="#reembolso" className="text-gold/60 underline">política</a>
+              <div className="space-y-8">
+                <div className="flex items-center gap-4 mb-2">
+                  <input type="checkbox" id={`terms-${i}`} className="w-5 h-5 rounded border-white/10 bg-white/5 text-gold focus:ring-gold" required />
+                  <label htmlFor={`terms-${i}`} className="text-[0.6rem] text-white/20 uppercase tracking-[0.3em] leading-tight font-bold">
+                    Aceito os <a href="#termos" className="text-gold/40 underline">termos</a> e <a href="#reembolso" className="text-gold/40 underline">política</a>
                   </label>
                 </div>
                 
                 <a 
                   href={plan.link}
-                  className={`block text-center py-6 text-[0.9rem] tracking-[0.3em] uppercase font-black transition-all ${
+                  className={`block text-center py-7 text-[0.9rem] tracking-[0.4em] uppercase font-black transition-all duration-500 ${
                     plan.popular 
-                      ? 'bg-gold text-black-pure hover:bg-gold-light hover:shadow-[0_15px_40px_rgba(201,169,110,0.3)]' 
+                      ? 'bg-gold text-black-pure hover:bg-white hover:shadow-[0_20px_60px_rgba(255,255,255,0.1)]' 
                       : 'border border-gold/30 text-gold hover:bg-gold hover:text-black-pure'
                   }`}
                 >
                   {plan.cta}
                 </a>
                 
-                <div className="flex justify-center items-center gap-4 opacity-30 grayscale hover:grayscale-0 transition-all">
-                  <ShieldCheck size={14} className="text-white" />
-                  <CreditCard size={14} className="text-white" />
-                  <span className="text-[0.6rem] uppercase tracking-widest text-white font-bold">Mercado Pago</span>
+                <div className="flex justify-center items-center gap-6 opacity-20 grayscale hover:grayscale-0 transition-all duration-500">
+                  <ShieldCheck size={16} className="text-white" />
+                  <CreditCard size={16} className="text-white" />
+                  <span className="text-[0.65rem] uppercase tracking-[0.4em] text-white font-black">Mercado Pago</span>
                 </div>
               </div>
             </motion.div>

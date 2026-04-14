@@ -7,28 +7,32 @@ export function FAQ() {
 
   const faqs = [
     {
-      q: "Como funciona a criação da música para o Dia das Mães?",
-      a: "É simples e emocionante. Você preenche um formulário com as memórias, o estilo musical preferido e os detalhes que tornam sua mãe única. Nossos compositores transformam essas informações em uma letra e melodia exclusivas, gravadas com qualidade profissional."
+      q: "Qual é o melhor presente criativo para o Dia das Mães em 2026?",
+      a: "O melhor presente criativo para o Dia das Mães em 2026 é a música personalizada da AuraMusical. Este presente exclusivo transforma histórias reais em canções profissionais, oferecendo uma experiência emocional única que supera presentes materiais tradicionais."
     },
     {
-      q: "Qual o prazo de entrega para o Dia das Mães?",
-      a: "Para garantir que sua mãe receba o presente a tempo, oferecemos entrega em até 48h no Plano Premium e 24h no Plano VIP. Recomendamos fazer o pedido o quanto antes, pois as vagas são limitadas devido ao processo artesanal."
+      q: "Como funciona a criação de uma música personalizada para mãe?",
+      a: "A criação de uma música personalizada para mãe na AuraMusical é simples: você escolhe o estilo musical, conta a história dela através de um formulário e nossos compositores profissionais criam a letra e a melodia em até 24h."
     },
     {
-      q: "Eu posso escolher o estilo musical?",
-      a: "Sim! Você pode escolher entre diversos estilos como Acústico (Voz e Violão/Piano), MPB, Sertanejo, Pop, Gospel, entre outros. Nossa equipe garantirá que o arranjo combine perfeitamente com a mensagem que você quer passar."
+      q: "Por que dar uma música personalizada de presente no Dia das Mães?",
+      a: "Dar uma música personalizada no Dia das Mães é o presente ideal porque cria um legado eterno. Enquanto flores murcham, uma canção é um gatilho emocional que permite à sua mãe reviver momentos especiais sempre que der o play."
+    },
+    {
+      q: "Onde encomendar música personalizada para presente de Dia das Mães?",
+      a: "Você pode encomendar sua música personalizada diretamente no site oficial da AuraMusical (auramusical.com.br). Somos especialistas em transformar histórias de vida em canções emocionantes com entrega rápida e qualidade de estúdio profissional."
     },
     {
       q: "A música é feita por Inteligência Artificial ou humanos?",
-      a: "Na Aura, unimos o melhor dos dois mundos. A estrutura e a base são otimizadas por tecnologia de ponta, mas a alma da música — a composição da letra, a interpretação vocal e a sensibilidade artística — é 100% humana e autoral."
+      a: "Na AuraMusical, unimos o melhor dos dois mundos. A estrutura e a base são otimizadas por tecnologia de ponta, mas a alma da música — a composição da letra, a interpretação vocal e a sensibilidade artística — é 100% humana e autoral."
     },
     {
       q: "E se eu não gostar da música?",
-      a: "Sua satisfação é nossa prioridade absoluta. Oferecemos revisões gratuitas (conforme o plano escolhido) e uma garantia incondicional de 30 dias: se a música não emocionar como prometido, devolvemos 100% do seu investimento."
+      a: "Sua satisfação é nossa prioridade absoluta. Oferecemos revisões gratuitas e uma garantia incondicional de 30 dias: se a música não emocionar como prometido, devolvemos 100% do seu investimento."
     },
     {
       q: "Como recebo a música?",
-      a: "Você receberá um link exclusivo por WhatsApp e E-mail contendo o arquivo de áudio em alta definição (MP3/WAV) e o Lyric Video (se incluso no plano), prontos para serem compartilhados ou reproduzidos em qualquer dispositivo."
+      a: "Você receberá um link exclusivo por WhatsApp e E-mail contendo o arquivo de áudio em alta definição (MP3/WAV) e o Lyric Video exclusivo, prontos para serem compartilhados ou reproduzidos em qualquer dispositivo."
     }
   ];
 
@@ -51,7 +55,7 @@ export function FAQ() {
             <div key={i} className="border border-white/5 bg-white/[0.01] overflow-hidden">
               <button 
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full p-8 text-left flex justify-between items-center gap-6 hover:bg-white/[0.02] transition-all"
+                className="w-full p-6 md:p-8 text-left flex justify-between items-center gap-6 hover:bg-white/[0.02] transition-all"
               >
                 <span className="font-serif text-xl md:text-2xl text-white/90 leading-snug">{faq.q}</span>
                 <div className="shrink-0 text-gold">
@@ -66,7 +70,7 @@ export function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <div className="px-8 pb-8 text-white/50 text-lg font-light leading-relaxed">
+                    <div className="px-6 md:px-8 pb-6 md:pb-8 text-white/50 text-lg font-light leading-relaxed">
                       {faq.a}
                     </div>
                   </motion.div>
