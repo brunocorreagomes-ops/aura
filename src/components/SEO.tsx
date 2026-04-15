@@ -100,8 +100,8 @@ export default function SEO() {
   return (
     <Helmet>
       <title>Presente Criativo Dia das Mães 2026 — Música Personalizada AuraMusical</title>
-      <meta name="description" content="Procurando um presente criativo para o Dia das Mães? A AuraMusical cria músicas personalizadas para mãe com letra e melodia exclusivas. Emocione com um presente único. Entrega rápida." />
-      <meta name="keywords" content="presente criativo dia das mães, música personalizada para mãe, presente personalizado para mãe, homenagem dia das mães, presente inesquecível mãe, ideias de presente dia das mães 2026, auramusical" />
+      <meta name="description" content="O presente de Dia das Mães que ela sempre sonhou. Transformamos sua história em uma música personalizada e eterna. O presente que sua mãe vai sentir — não só receber." />
+      <meta name="keywords" content="presente criativo dia das mães, música personalizada para mãe, presente personalizado para mãe, homenagem dia das mães, presente inesquecível mãe, ideias de presente dia das mães 2026, auramusical, presente que ela vai sentir" />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />

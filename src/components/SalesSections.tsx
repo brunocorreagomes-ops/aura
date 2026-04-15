@@ -21,7 +21,7 @@ export function PainSection() {
           className="font-serif text-3xl md:text-6xl font-light leading-tight mb-16 text-white"
         >
           Flores murcham, joias se perdem... <br />
-          <span className="text-gold italic">mas uma música é um legado eterno.</span>
+          <span className="text-gold italic">mas uma música é um presente que ela vai sentir para sempre.</span>
         </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">

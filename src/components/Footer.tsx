@@ -8,14 +8,36 @@ export function MusicForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    
     if (step === 1) {
       setStep(2);
       return;
     }
     
     setStatus('submitting');
-    // Simulate API call
-    setTimeout(() => setStatus('success'), 2000);
+    
+    const data = {
+      userName: formData.get('userName'),
+      userPhone: formData.get('userPhone'),
+      targetName: formData.get('targetName'),
+      targetRelation: formData.get('targetRelation'),
+      targetDate: formData.get('targetDate'),
+      story: formData.get('story'),
+      express: formData.get('express') === 'on',
+    };
+
+    // Links do Mercado Pago
+    const LINK_MP_BASE = "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_ID_97";
+    const LINK_MP_EXPRESS = "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_ID_124";
+
+    // Redireciona para o Mercado Pago baseado na escolha
+    const checkoutUrl = data.express ? LINK_MP_EXPRESS : LINK_MP_BASE;
+
+    setTimeout(() => {
+      setStatus('success');
+      window.location.href = checkoutUrl;
+    }, 1500);
   };
 
   return (
@@ -56,12 +78,17 @@ export function MusicForm() {
                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-10">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div className="space-y-4">
-                          <label className="block text-[0.65rem] tracking-[0.3em] uppercase text-white/30 font-black">Seu Nome Completo</label>
-                          <input required name="userName" type="text" placeholder="Ex: João Silva" className="w-full bg-white/[0.02] border border-white/10 text-white px-8 py-6 outline-none focus:border-gold transition-all font-light text-lg" />
+                          <label className="block text-[0.65rem] tracking-[0.3em] uppercase text-white/30 font-black">Para quem é o presente?</label>
+                          <select required name="targetRelation" className="w-full bg-white/[0.02] border border-white/10 text-white px-8 py-6 outline-none focus:border-gold transition-all font-light text-lg appearance-none">
+                            <option value="mae" className="bg-[#0d0d0d]">Minha Mãe</option>
+                            <option value="avo" className="bg-[#0d0d0d]">Minha Avó</option>
+                            <option value="esposa" className="bg-[#0d0d0d]">Minha Esposa (Mãe dos meus filhos)</option>
+                            <option value="outra" className="bg-[#0d0d0d]">Outra pessoa especial</option>
+                          </select>
                         </div>
                         <div className="space-y-4">
-                          <label className="block text-[0.65rem] tracking-[0.3em] uppercase text-white/30 font-black">Seu WhatsApp</label>
-                          <input required name="userPhone" type="tel" placeholder="(00) 00000-0000" className="w-full bg-white/[0.02] border border-white/10 text-white px-8 py-6 outline-none focus:border-gold transition-all font-light text-lg" />
+                          <label className="block text-[0.65rem] tracking-[0.3em] uppercase text-white/30 font-black">Data Desejada</label>
+                          <input required name="targetDate" type="date" className="w-full bg-white/[0.02] border border-white/10 text-white px-8 py-6 outline-none focus:border-gold transition-all font-light text-lg" />
                         </div>
                       </div>
                       <button type="submit" className="w-full bg-gold text-black-pure py-8 font-black uppercase tracking-[0.4em] text-[0.9rem] hover:bg-white transition-all shadow-[0_20px_50px_rgba(201,169,110,0.2)]">
@@ -78,9 +105,18 @@ export function MusicForm() {
                         <label className="block text-[0.65rem] tracking-[0.3em] uppercase text-white/30 font-black">A História (O que torna ela especial?)</label>
                         <textarea required name="story" rows={6} placeholder="Ex: Ela ama girassóis, nosso apelido é..., ela sempre diz que..." className="w-full bg-white/[0.02] border border-white/10 text-white px-8 py-6 outline-none focus:border-gold transition-all resize-none font-light leading-relaxed text-lg" />
                       </div>
+                      
+                      <div className="flex items-start gap-4 bg-gold/5 p-6 border border-gold/20">
+                        <input type="checkbox" id="express" name="express" className="mt-1 w-5 h-5 accent-gold" />
+                        <label htmlFor="express" className="cursor-pointer">
+                          <strong className="block text-gold text-sm uppercase tracking-widest font-black">Quero entrega expressa em 24h</strong>
+                          <span className="text-white/40 text-xs font-light">Receba sua música amanhã (+R$ 27)</span>
+                        </label>
+                      </div>
+
                       <div className="flex flex-col gap-6">
                         <button type="submit" disabled={status === 'submitting'} className="w-full bg-gold text-black-pure py-8 font-black uppercase tracking-[0.4em] text-[0.9rem] hover:bg-white transition-all shadow-[0_20px_50px_rgba(201,169,110,0.2)] disabled:opacity-50">
-                          {status === 'submitting' ? "Sintonizando Emoções..." : "Finalizar e Criar Música"}
+                          {status === 'submitting' ? "Sintonizando Emoções..." : "Garantir Presente Agora 💝"}
                         </button>
                         <button type="button" onClick={() => setStep(1)} className="text-white/20 text-[0.7rem] uppercase tracking-[0.3em] hover:text-gold transition-colors font-black">Voltar para etapa anterior</button>
                       </div>

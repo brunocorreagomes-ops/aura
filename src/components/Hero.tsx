@@ -105,31 +105,60 @@ export function Hero() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
           <Sparkles className="text-gold animate-pulse" size={16} />
           <span className="text-[0.7rem] md:text-[0.8rem] tracking-[0.5em] uppercase text-gold font-black animate-pulse">
-            Lançamento Oficial: Dia das Mães 2026
+            Edição Limitada: Dia das Mães 2026
           </span>
           <div className="w-2 h-2 rounded-full bg-gold shadow-[0_0_15px_rgba(201,169,110,1)] animate-ping" />
         </motion.div>
 
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           <motion.h1 
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] font-light leading-[0.95] tracking-tight mb-10 text-white"
           >
-            Mais que um presente, <br className="hidden md:block" />
-            um eco do coração dela. <br className="hidden md:block" />
-            <em className="italic text-gold font-light">O presente de Dia das Mães que ela sempre sonhou.</em>
+            O presente que sua mãe vai <br className="hidden md:block" />
+            <em className="italic text-gold font-light">sentir</em> — não só receber
           </motion.h1>
 
           <motion.p 
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-lg md:text-2xl font-light text-white/50 leading-relaxed max-w-[850px] mx-auto mb-16 px-4"
+            className="text-lg md:text-2xl font-light text-white/50 leading-relaxed max-w-[850px] mx-auto mb-12 px-4"
           >
-            Celebre o lançamento oficial da AuraMusical com nossa oferta exclusiva de Dia das Mães. Transformamos sua história em uma canção original, profissional e eterna. O presente mais criativo que ela já recebeu.
+            Transformamos sua história em uma canção original e eterna. Diga o que as palavras comuns não conseguem expressar.
           </motion.p>
+
+          <div className="flex flex-col items-center gap-8 mb-16">
+            <div className="bg-white/[0.02] border border-white/10 p-8 rounded-2xl backdrop-blur-sm">
+              <div className="text-gold text-[0.7rem] tracking-[0.4em] uppercase font-black mb-4">Oferta expira em:</div>
+              <div className="flex gap-6 text-3xl font-serif text-white">
+                <div className="flex flex-col items-center">
+                  <span>00</span>
+                  <span className="text-[0.5rem] uppercase tracking-widest text-white/30 mt-1">Horas</span>
+                </div>
+                <span className="text-gold/30">:</span>
+                <div className="flex flex-col items-center">
+                  <span>15</span>
+                  <span className="text-[0.5rem] uppercase tracking-widest text-white/30 mt-1">Minutos</span>
+                </div>
+                <span className="text-gold/30">:</span>
+                <div className="flex flex-col items-center">
+                  <span>00</span>
+                  <span className="text-[0.5rem] uppercase tracking-widest text-white/30 mt-1">Segundos</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex flex-col items-center gap-2">
+              <div className="flex items-center gap-4 text-white/30 text-[0.65rem] tracking-[0.3em] uppercase font-bold">
+                <span className="line-through">De R$ 197</span>
+                <span className="text-gold">Por R$ 97</span>
+              </div>
+              <p className="text-gold/60 text-[0.6rem] tracking-[0.2em] uppercase font-black">Oferta de Lançamento: 30% OFF + Lyric Video Grátis</p>
+            </div>
+          </div>
 
           {/* GEO Snippet for AI Search Engines */}
           <div className="sr-only">
