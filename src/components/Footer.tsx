@@ -240,7 +240,7 @@ export function MusicForm() {
 
 export function Footer() {
   return (
-    <footer className="bg-[#0d0d0d] px-6 md:px-12 py-32 border-t border-white/5">
+    <footer className="bg-bg-deep px-6 md:px-12 py-32 border-t border-white/5">
       <div className="max-w-[1200px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-20 mb-24">
           <div className="col-span-1 md:col-span-2">
@@ -248,7 +248,7 @@ export function Footer() {
               <img 
                 src="https://i.ibb.co/cSVmZCTK/Chat-GPT-Image-14-de-abr-de-2026-02-41-02.png" 
                 alt="AuraMusical Logo" 
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain brightness-0 invert opacity-50"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -258,26 +258,26 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="text-gold text-[0.7rem] tracking-[0.3em] uppercase font-black mb-10">Navegação</h4>
+            <h4 className="text-primary text-[0.7rem] tracking-[0.3em] uppercase font-black mb-10">Navegação</h4>
             <ul className="space-y-6">
               {['Início', 'Como Funciona', 'Exemplos', 'Preços', 'Sobre'].map((item) => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-white/40 hover:text-gold transition-colors text-[0.9rem] font-light">{item}</a>
+                  <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-white/40 hover:text-primary transition-colors text-[0.9rem] font-light">{item}</a>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-gold text-[0.7rem] tracking-[0.3em] uppercase font-black mb-10">Social</h4>
+            <h4 className="text-primary text-[0.7rem] tracking-[0.3em] uppercase font-black mb-10">Social</h4>
             <div className="flex gap-6">
-              <a href="#" className="w-12 h-12 bg-white/[0.03] border border-white/5 flex items-center justify-center rounded-full text-white/40 hover:bg-gold hover:text-black-pure hover:border-gold transition-all">
+              <a href="#" className="w-12 h-12 bg-white/[0.03] border border-white/5 flex items-center justify-center rounded-full text-white/40 hover:bg-primary hover:text-bg-deep hover:border-primary transition-all">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="w-12 h-12 bg-white/[0.03] border border-white/5 flex items-center justify-center rounded-full text-white/40 hover:bg-gold hover:text-black-pure hover:border-gold transition-all">
+              <a href="#" className="w-12 h-12 bg-white/[0.03] border border-white/5 flex items-center justify-center rounded-full text-white/40 hover:bg-primary hover:text-bg-deep hover:border-primary transition-all">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="w-12 h-12 bg-white/[0.03] border border-white/5 flex items-center justify-center rounded-full text-white/40 hover:bg-gold hover:text-black-pure hover:border-gold transition-all">
+              <a href="#" className="w-12 h-12 bg-white/[0.03] border border-white/5 flex items-center justify-center rounded-full text-white/40 hover:bg-primary hover:text-bg-deep hover:border-primary transition-all">
                 <Youtube size={20} />
               </a>
             </div>

@@ -5,17 +5,18 @@
   --font-serif: "Cormorant Garamond", serif;
   --font-sans: "DM Sans", sans-serif;
   
+  --color-primary: #1ECAD3;
+  --color-bg-deep: #0B1C2C;
+  --color-bg-card: #13293D;
+  
   --color-gold: #C9A96E;
   --color-gold-light: #E8D5B0;
   --color-gold-dark: #8B6D3F;
   --color-black-pure: #0A0806;
-  --color-black-soft: #100D09;
-  --color-cream: #F7F2EA;
-  --color-cream-dark: #EDE5D6;
 }
 
 :root {
-  --black: #0A0806;
+  --black: #0B1C2C;
   --white: #FDFAF5;
 }
 

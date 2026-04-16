@@ -6,25 +6,16 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import SEO from './components/SEO';
-import { Navbar, Hero } from './components/Hero';
-import { TrustBar, HowItWorks, AudioSamples } from './components/TrustBar';
-import { PainSection, SolutionSection, ImmersionSection, FinalCTA } from './components/SalesSections';
+import { MotherDayStandard } from './components/MotherDayStandard';
 import { FloatingElements } from './components/FloatingElements';
 import { Upsell } from './components/Upsell';
 import { Thanks } from './components/Thanks';
-import { ExitPopup } from './components/ExitPopup';
 import { StoryDetails } from './components/StoryDetails';
 
 // Lazy load below-the-fold components
-const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
-const Occasions = lazy(() => import('./components/Occasions').then(m => ({ default: m.Occasions })));
-const Pricing = lazy(() => import('./components/Occasions').then(m => ({ default: m.Pricing })));
-const Guarantee = lazy(() => import('./components/Occasions').then(m => ({ default: m.Guarantee })));
-const FAQ = lazy(() => import('./components/FAQ').then(m => ({ default: m.FAQ })));
-const MusicForm = lazy(() => import('./components/Footer').then(m => ({ default: m.MusicForm })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 
-// Loading placeholder for lazy components
+// Loading placeholder
 const SectionLoader = () => <div className="h-40 w-full flex items-center justify-center bg-[#0d0d0d]" />;
 
 export default function App() {
@@ -53,32 +44,14 @@ export default function App() {
 
   return (
     <HelmetProvider>
-      <div className="grain min-h-screen font-sans selection:bg-gold selection:text-black-pure bg-[#0d0d0d] text-white">
+      <div className="grain min-h-screen font-sans selection:bg-primary selection:text-bg-deep bg-bg-deep text-white">
         <SEO />
-        <Navbar />
         <main>
-          <Hero />
-          <TrustBar />
-          <HowItWorks />
-          <AudioSamples />
-          
-          <Suspense fallback={<SectionLoader />}>
-            <PainSection />
-            <SolutionSection />
-            <ImmersionSection />
-            <About />
-            <Occasions />
-            <FAQ />
-            <Pricing />
-            <Guarantee />
-            <FinalCTA />
-            <MusicForm />
-          </Suspense>
+          <MotherDayStandard />
         </main>
         <Suspense fallback={null}>
           <Footer />
           <FloatingElements />
-          <ExitPopup />
         </Suspense>
       </div>
     </HelmetProvider>
