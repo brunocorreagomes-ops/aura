@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, ShieldCheck, Music, Clock, Sparkles, Heart, Menu, X } from 'lucide-react';
+import { Play, ShieldCheck, Music, Clock, Sparkles, Heart, Menu, X, Star, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,6 +72,8 @@ export function Navbar() {
 }
 
 export function Hero() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-12 pt-[160px] pb-32 overflow-hidden bg-[#0d0d0d]">
       {/* Immersive Background */}
@@ -80,6 +82,26 @@ export function Hero() {
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-gold/5 blur-[150px] rounded-full" />
         <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/aura-abstract-music/1920/1080?blur=10')] opacity-[0.07] mix-blend-soft-light pointer-events-none bg-cover bg-center" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0d0d0d]/50 to-[#0d0d0d]" />
+        
+        {/* Subtle Audio Visualization Waves */}
+        <div className="absolute inset-x-0 bottom-0 h-[40vh] flex items-end justify-center gap-1 px-4 opacity-20 pointer-events-none overflow-hidden">
+          {Array.from({ length: 60 }).map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ height: 20 }}
+              animate={isPlaying ? {
+                height: [20, Math.random() * 200 + 40, 20],
+              } : { height: 20 }}
+              transition={isPlaying ? {
+                duration: Math.random() * 0.5 + 0.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.02
+              } : { duration: 0.5 }}
+              className="w-1 md:w-2 bg-gradient-to-t from-gold to-transparent rounded-full"
+            />
+          ))}
+        </div>
       </div>
       
       <div className="relative z-10 max-w-[1200px] w-full mx-auto flex flex-col items-center">
@@ -105,7 +127,7 @@ export function Hero() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
           <Sparkles className="text-gold animate-pulse" size={16} />
           <span className="text-[0.7rem] md:text-[0.8rem] tracking-[0.5em] uppercase text-gold font-black animate-pulse">
-            Edição Limitada: Dia das Mães 2026
+            EDIÇÃO LIMITADA • DIA DAS MÃES 2026
           </span>
           <div className="w-2 h-2 rounded-full bg-gold shadow-[0_0_15px_rgba(201,169,110,1)] animate-ping" />
         </motion.div>
@@ -117,8 +139,9 @@ export function Hero() {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] font-light leading-[0.95] tracking-tight mb-10 text-white"
           >
-            O presente que sua mãe vai <br className="hidden md:block" />
-            <em className="italic text-gold font-light">sentir</em> — não só receber
+            A música que sua mãe <br className="hidden md:block" />
+            <em className="italic text-gold font-light">nunca imaginou</em>… <br className="hidden md:block" />
+            mas nunca vai esquecer
           </motion.h1>
 
           <motion.p 
@@ -127,36 +150,73 @@ export function Hero() {
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-lg md:text-2xl font-light text-white/50 leading-relaxed max-w-[850px] mx-auto mb-12 px-4"
           >
-            Transformamos sua história em uma canção original e eterna. Diga o que as palavras comuns não conseguem expressar.
+            Transformamos sua história com ela em uma <strong>canção exclusiva</strong> — feita sob medida, emocionante e única no mundo.
           </motion.p>
 
           <div className="flex flex-col items-center gap-8 mb-16">
-            <div className="bg-white/[0.02] border border-white/10 p-8 rounded-2xl backdrop-blur-sm">
-              <div className="text-gold text-[0.7rem] tracking-[0.4em] uppercase font-black mb-4">Oferta expira em:</div>
-              <div className="flex gap-6 text-3xl font-serif text-white">
-                <div className="flex flex-col items-center">
-                  <span>00</span>
-                  <span className="text-[0.5rem] uppercase tracking-widest text-white/30 mt-1">Horas</span>
+            <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-8">
+              {[
+                "100% personalizada com a história de vocês",
+                "Presente que emociona de verdade",
+                "Entrega rápida para o Dia das Mães"
+              ].map((text, i) => (
+                <div key={i} className="flex items-center gap-3 text-white/60 text-[0.7rem] md:text-[0.8rem] uppercase tracking-widest font-bold">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                  {text}
                 </div>
-                <span className="text-gold/30">:</span>
-                <div className="flex flex-col items-center">
-                  <span>15</span>
-                  <span className="text-[0.5rem] uppercase tracking-widest text-white/30 mt-1">Minutos</span>
-                </div>
-                <span className="text-gold/30">:</span>
-                <div className="flex flex-col items-center">
-                  <span>00</span>
-                  <span className="text-[0.5rem] uppercase tracking-widest text-white/30 mt-1">Segundos</span>
+              ))}
+            </div>
+
+            <div className="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-2xl backdrop-blur-sm relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative z-10">
+                <div className="text-gold text-[0.7rem] tracking-[0.4em] uppercase font-black mb-6 italic">Oferta especial de Dia das Mães 💐</div>
+                
+                <div className="pt-8 border-t border-white/10 space-y-4">
+                  <div className="flex items-center justify-center gap-6">
+                    <span className="text-white/30 line-through text-2xl font-light">R$ 297</span>
+                    <span className="text-white text-6xl font-black"><span className="text-gold text-2xl mr-2">R$</span>147</span>
+                  </div>
+                  <p className="text-gold text-[0.7rem] tracking-[0.2em] uppercase font-black">Entrega garantida + Revisão gratuita + Arquivo Pronto</p>
                 </div>
               </div>
             </div>
             
-            <div className="flex flex-col items-center gap-2">
-              <div className="flex items-center gap-4 text-white/30 text-[0.65rem] tracking-[0.3em] uppercase font-bold">
-                <span className="line-through">De R$ 197</span>
-                <span className="text-gold">Por R$ 97</span>
+            <div className="flex flex-col items-center gap-6">
+              <div className="flex flex-col items-center">
+                <motion.a 
+                  href="#criar" 
+                  animate={{ 
+                    scale: [1, 1.02, 1],
+                    boxShadow: [
+                      "0 0 0px rgba(201,169,110,0)", 
+                      "0 0 40px rgba(201,169,110,0.4)", 
+                      "0 0 0px rgba(201,169,110,0)"
+                    ] 
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="bg-gold text-black-pure px-12 py-8 rounded-full font-black uppercase tracking-[0.4em] text-sm hover:bg-white transition-all shadow-[0_20px_50px_rgba(201,169,110,0.2)]"
+                >
+                  CRIAR MINHA MÚSICA AGORA
+                </motion.a>
+                <span className="text-white/20 text-[0.6rem] uppercase tracking-widest mt-4 font-bold">Leva menos de 2 minutos pra começar</span>
               </div>
-              <p className="text-gold/60 text-[0.6rem] tracking-[0.2em] uppercase font-black">Oferta de Lançamento: 30% OFF + Lyric Video Grátis</p>
+
+              <div className="flex flex-col items-center gap-4 text-white/30 text-[0.65rem] tracking-[0.2em] uppercase font-bold">
+                <div className="flex items-center gap-1 text-gold">
+                  <Star size={10} fill="currentColor" />
+                  <Star size={10} fill="currentColor" />
+                  <Star size={10} fill="currentColor" />
+                  <Star size={10} fill="currentColor" />
+                  <Star size={10} fill="currentColor" />
+                  <span className="ml-2">+500 músicas entregues</span>
+                </div>
+                <div className="flex gap-4">
+                  <span>“Minha mãe chorou quando ouviu”</span>
+                  <span className="text-gold/50">|</span>
+                  <span className="flex items-center gap-2 italic"><ShieldCheck size={12} className="text-gold/40" /> Garantia total de satisfação</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -185,9 +245,30 @@ export function Hero() {
                 
                 <div className="flex flex-col md:flex-row items-center gap-10 relative z-10">
                   <div className="relative">
-                    <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gold flex items-center justify-center text-black-pure shadow-[0_0_50px_rgba(201,169,110,0.4)] hover:scale-105 transition-transform cursor-pointer">
-                      <Play size={40} fill="currentColor" className="ml-2" />
-                    </div>
+                    <button 
+                      onClick={() => setIsPlaying(!isPlaying)}
+                      className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gold flex items-center justify-center text-black-pure shadow-[0_0_50px_rgba(201,169,110,0.4)] hover:scale-105 transition-transform cursor-pointer relative z-20"
+                    >
+                      <Play size={40} fill="currentColor" className={isPlaying ? "opacity-30" : "ml-2"} />
+                      {isPlaying && (
+                        <motion.div 
+                          className="absolute inset-0 flex items-center justify-center"
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                        >
+                          <div className="flex gap-1">
+                            {[1, 2, 3].map(bar => (
+                              <motion.div
+                                key={bar}
+                                className="w-1.5 bg-black-pure rounded-full"
+                                animate={{ height: [10, 30, 10] }}
+                                transition={{ duration: 0.5, repeat: Infinity, delay: bar * 0.1 }}
+                              />
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </button>
                     <div className="absolute -bottom-2 -right-2 bg-white text-black-pure text-[0.6rem] font-black px-3 py-1 rounded-full uppercase tracking-tighter shadow-xl">
                       Demo
                     </div>
@@ -204,13 +285,17 @@ export function Hero() {
                 <div className="mt-12 space-y-4 relative z-10">
                   <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
                     <motion.div 
-                      animate={{ width: ["0%", "100%"] }}
-                      transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                      animate={isPlaying ? { width: "100%" } : { width: "12%" }}
+                      initial={{ width: "12%" }}
+                      transition={isPlaying ? { 
+                        duration: 45, 
+                        ease: "linear" 
+                      } : { duration: 0.5 }}
                       className="h-full bg-gold shadow-[0_0_15px_rgba(201,169,110,0.6)]"
                     />
                   </div>
                   <div className="flex justify-between text-[0.65rem] text-white/20 tracking-[0.3em] uppercase font-black">
-                    <span>0:12</span>
+                    <span>{isPlaying ? "0:12" : "0:00"}</span>
                     <span>1:00</span>
                   </div>
                 </div>

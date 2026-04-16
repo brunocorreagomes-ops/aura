@@ -9,8 +9,10 @@ interface UpsellProps {
 }
 
 const LINKS = {
-  VIDEO_47: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_ID_47",
-  VIDEO_27: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_ID_27",
+  VIDEO_49: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_ID_49",
+  CANTORA_79: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_ID_79",
+  SPOTIFY_29: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_ID_29",
+  DESCONTO_VIDEO_29: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_ID_29_V",
 };
 
 export function Upsell({ type, onNext, onAccept }: UpsellProps) {
@@ -18,7 +20,7 @@ export function Upsell({ type, onNext, onAccept }: UpsellProps) {
 
   return (
     <div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center px-6 py-20">
-      <div className="max-w-[600px] w-full">
+      <div className="max-w-[800px] w-full">
         <div className="w-full h-1.5 bg-white/5 rounded-full mb-12 overflow-hidden">
           <motion.div 
             initial={{ width: 0 }}
@@ -35,64 +37,78 @@ export function Upsell({ type, onNext, onAccept }: UpsellProps) {
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-50" />
           
           <p className="text-gold text-[0.7rem] tracking-[0.4em] uppercase font-black mb-6">
-            {isUpsell1 ? "ESPERE! NÃO FECHE ESTA PÁGINA..." : "ÚLTIMA CHANCE..."}
+            {isUpsell1 ? "QUASE LÁ! TURBINE SUA HOMENAGEM" : "ÚLTIMA CHANCE... DESCONTO LIBERADO"}
           </p>
 
           <h1 className="font-serif text-3xl md:text-5xl text-white mb-8 leading-tight">
             {isUpsell1 ? (
-              <>Torne este momento visualmente <em className="italic text-gold">inesquecível</em></>
+              <>Dê um toque <em className="italic text-gold">profissional</em> extra</>
             ) : (
-              <>E se eu te der um <em className="italic text-gold">desconto especial</em> no vídeo?</>
+              <>Não perca o <em className="italic text-gold">Vídeo com Fotos</em></>
             )}
           </h1>
 
-          <p className="text-white/50 text-lg font-light mb-10 leading-relaxed">
-            {isUpsell1 
-              ? "Sua música é linda, mas imagine ela assistindo a um Lyric Video (Vídeo com Letra) personalizado com fotos de vocês enquanto ouve a canção."
-              : "Eu realmente não quero que sua mãe perca a experiência de ver a letra enquanto ouve. Vou te dar uma versão simplificada do vídeo por um valor simbólico."
-            }
-          </p>
-
-          <div className="bg-black/40 rounded-2xl p-8 mb-10 border border-white/5">
-            <ul className="text-left space-y-4 mb-8">
+          {isUpsell1 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               {[
-                "Letra sincronizada com a música",
-                "Fundo cinematográfico ou fotos pessoais",
-                "Alta definição para compartilhar",
-                "Efeito emocional 10x maior"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-white/70 text-sm">
-                  <CheckCircle2 size={18} className="text-gold shrink-0" />
-                  {item}
-                </li>
+                {
+                  title: "Vídeo com Fotos",
+                  price: "49",
+                  link: LINKS.VIDEO_49,
+                  desc: "Lyric video com fotos de vocês."
+                },
+                {
+                  title: "Cantora Profissional",
+                  price: "79",
+                  link: LINKS.CANTORA_79,
+                  desc: "Voz feminina de estúdio."
+                },
+                {
+                  title: "Estilo Spotify",
+                  price: "29",
+                  link: LINKS.SPOTIFY_29,
+                  desc: "Capa e publicação digital."
+                }
+              ].map((opt, i) => (
+                <div key={i} className="bg-black/40 border border-white/5 p-6 rounded-2xl flex flex-col justify-between hover:border-gold/30 transition-all group">
+                  <div>
+                    <h3 className="text-white font-serif text-lg mb-2">{opt.title}</h3>
+                    <p className="text-white/40 text-[0.7rem] mb-4">{opt.desc}</p>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-black text-gold mb-4">R$ {opt.price}</div>
+                    <button 
+                      onClick={() => onAccept(opt.link)}
+                      className="w-full bg-white/5 border border-white/10 text-white text-[0.6rem] py-3 uppercase tracking-widest font-black hover:bg-gold hover:text-black-pure transition-all"
+                    >
+                      ADICIONAR
+                    </button>
+                  </div>
+                </div>
               ))}
-            </ul>
-
-            <div className="pt-6 border-t border-white/5">
-              <p className="text-white/30 text-xs uppercase tracking-widest mb-2">
-                {isUpsell1 ? "Adicione por apenas:" : "De R$ 47 por apenas:"}
-              </p>
-              <div className="text-5xl font-black text-white">
-                <span className="text-gold text-2xl mr-2">R$</span>
-                {isUpsell1 ? "47" : "27"}
-              </div>
             </div>
-          </div>
+          ) : (
+            <div className="bg-black/40 rounded-2xl p-8 mb-10 border border-white/5 max-w-[500px] mx-auto">
+              <p className="text-white/30 text-xs uppercase tracking-widest mb-2">De R$ 49 por apenas:</p>
+              <div className="text-6xl font-black text-white mb-6">
+                <span className="text-gold text-2xl mr-2">R$</span>29
+              </div>
+              <button 
+                onClick={() => onAccept(LINKS.DESCONTO_VIDEO_29)}
+                className="w-full bg-gold text-black-pure py-6 rounded-xl font-black uppercase tracking-[0.3em] text-sm hover:bg-white transition-all shadow-[0_20px_50px_rgba(201,169,110,0.2)]"
+              >
+                QUERO O VÍDEO COM DESCONTO 🎬
+              </button>
+            </div>
+          )}
 
           <div className="flex flex-col gap-6">
-            <button 
-              onClick={() => onAccept(isUpsell1 ? LINKS.VIDEO_47 : LINKS.VIDEO_27)}
-              className="w-full bg-gold text-black-pure py-6 rounded-xl font-black uppercase tracking-[0.3em] text-sm hover:bg-white transition-all shadow-[0_20px_50px_rgba(201,169,110,0.2)] flex items-center justify-center gap-3"
-            >
-              {isUpsell1 ? "SIM! QUERO O VÍDEO PERSONALIZADO 🎬" : "OK, QUERO O VÍDEO POR R$ 27 🎁"}
-            </button>
-            
             <button 
               onClick={onNext}
               className="text-white/20 hover:text-white/40 transition-colors text-[0.7rem] uppercase tracking-[0.3em] font-bold flex items-center justify-center gap-2"
             >
               <XCircle size={14} />
-              {isUpsell1 ? "Não, quero apenas a música (perder esta oferta)" : "Não, obrigado. Prefiro ficar sem o vídeo."}
+              {isUpsell1 ? "Não, continuar para finalização" : "Não, obrigado. Prefiro ficar sem o vídeo."}
             </button>
           </div>
         </motion.div>

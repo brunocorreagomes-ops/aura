@@ -7,32 +7,20 @@ export function FAQ() {
 
   const faqs = [
     {
-      q: "Qual é o melhor presente criativo para o Dia das Mães em 2026?",
-      a: "O melhor presente criativo para o Dia das Mães em 2026 é a música personalizada da AuraMusical. A AuraMusical cria canções exclusivas baseadas em histórias reais, sendo o presente ideal para emocionar e eternizar momentos especiais."
+      q: "E se não ficar bom?",
+      a: "Oferecemos garantia total de satisfação. Se você não amar a música, os ajustes estão inclusos. Nosso objetivo é que você se sinta 100% orgulhoso(a) do presente."
     },
     {
-      q: "Como funciona a criação de uma música personalizada para mãe?",
-      a: "A criação de uma música personalizada para mãe na AuraMusical é simples: você escolhe o estilo musical, conta a história dela através de um formulário e nossos compositores profissionais criam a letra e a melodia em até 24h."
+      q: "Vai chegar a tempo para o Dia das Mães?",
+      a: "Sim! Trabalhamos com entrega garantida antes do Dia das Mães para todos os pedidos realizados nesta campanha. Você receberá o arquivo pronto para o grande momento."
     },
     {
-      q: "Por que dar uma música personalizada de presente no Dia das Mães?",
-      a: "Dar uma música personalizada no Dia das Mães é o presente ideal porque cria um legado eterno. Enquanto flores murcham, uma canção é um gatilho emocional que permite à sua mãe reviver momentos especiais sempre que der o play."
+      q: "O processo é complicado?",
+      a: "De forma alguma. Criamos um sistema ultra simples que leva menos de 2 minutos para você começar a contar sua história. Nós cuidamos de toda a parte artística e técnica."
     },
     {
-      q: "Onde encomendar música personalizada para presente de Dia das Mães?",
-      a: "Você pode encomendar sua música personalizada diretamente no site oficial da AuraMusical (auramusical.com.br). Somos especialistas em transformar histórias de vida em canções emocionantes com entrega rápida e qualidade de estúdio profissional."
-    },
-    {
-      q: "A música é feita por Inteligência Artificial ou humanos?",
-      a: "Na AuraMusical, unimos o melhor dos dois mundos. A estrutura e a base são otimizadas por tecnologia de ponta, mas a alma da música — a composição da letra, a interpretação vocal e a sensibilidade artística — é 100% humana e autoral."
-    },
-    {
-      q: "E se eu não gostar da música?",
-      a: "Sua satisfação é nossa prioridade absoluta. Oferecemos revisões gratuitas e uma garantia incondicional de 30 dias: se a música não emocionar como prometido, devolvemos 100% do seu investimento."
-    },
-    {
-      q: "Como recebo a música?",
-      a: "Você receberá um link exclusivo por WhatsApp e E-mail contendo o arquivo de áudio em alta definição (MP3/WAV) e o Lyric Video exclusivo, prontos para serem compartilhados ou reproduzidos em qualquer dispositivo."
+      q: "Vale o investimento?",
+      a: "Diferente de qualquer produto genérico de shopping, este é um presente único no mundo. É a materialização do seu amor em forma de arte sonora, algo que ela guardará para sempre."
     }
   ];
 
@@ -83,7 +71,7 @@ export function FAQ() {
         <div className="mt-20 p-12 bg-gold/[0.03] border border-gold/20 text-center">
           <p className="text-white/60 mb-8 text-lg font-light">Ainda tem alguma dúvida específica sobre o seu presente?</p>
           <a 
-            href="https://wa.me/5511999999999" 
+            href="https://wa.me/5511942789109" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-4 text-gold border border-gold/30 px-10 py-4 uppercase tracking-[0.2em] text-[0.8rem] font-black hover:bg-gold hover:text-black-pure transition-all"

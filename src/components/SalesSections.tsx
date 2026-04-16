@@ -64,6 +64,33 @@ export function PainSection() {
 export function SolutionSection() {
   return (
     <section className="bg-[#0d0d0d] px-6 md:px-12 py-32 overflow-hidden border-t border-white/5 content-visibility-auto">
+      {/* Bloco Emocional */}
+      <div className="max-w-[1000px] mx-auto mb-32 text-center">
+        <motion.div
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="relative inline-block mb-12 rounded-3xl overflow-hidden shadow-2xl border border-white/5"
+        >
+          <img 
+            src="https://picsum.photos/seed/mother-hug/1200/600" 
+            alt="Momento Emocionante" 
+            className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent" />
+        </motion.div>
+        
+        <h2 className="font-serif text-4xl md:text-7xl font-light text-white leading-tight mb-8">
+          Ela esteve com você em <br />
+          <em className="italic text-gold font-light">todos os momentos…</em>
+        </h2>
+        <p className="text-white/40 text-xl font-light max-w-[750px] mx-auto leading-relaxed">
+          Agora é a sua vez de retribuir de um jeito que ela nunca vai esquecer. <br />
+          O presente que ela vai ouvir e sentir para sempre.
+        </p>
+      </div>
+
       <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}

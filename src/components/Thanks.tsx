@@ -2,11 +2,18 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2, MessageSquare, ArrowRight } from 'lucide-react';
 
-const WHATSAPP_NUMBER = "5511999999999";
+const WHATSAPP_NUMBER = "5511942789109";
 
 export function Thanks() {
   const contactWhatsApp = () => {
-    const message = encodeURIComponent("Olá Aura Musical! Acabei de garantir o presente musical de Dia das Mães. Gostaria de enviar os detalhes para a criação da música.");
+    const savedData = localStorage.getItem('aura_full_data');
+    let details = "";
+    if (savedData) {
+      const data = JSON.parse(savedData);
+      details = `\n\n*Resumo do Pedido:*\n- Cliente: ${data.userName}\n- Presente para: ${data.targetRelation}\n- Data: ${data.targetDate}\n- Entrega Expressa: ${data.express ? 'Sim' : 'Não'}`;
+    }
+    
+    const message = encodeURIComponent(`Olá Aura Musical! Acabei de garantir o presente musical de Dia das Mães. Gostaria de enviar os detalhes para a criação da música.${details}`);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
   };
 

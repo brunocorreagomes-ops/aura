@@ -57,45 +57,34 @@ export function Occasions() {
 export function Pricing() {
   const plans = [
     {
-      name: "Plano Essencial",
-      price: "97",
-      desc: "Ideal para quem planeja com antecedência.",
-      features: ["1 canção original personalizada", "Entrega em até 5 dias úteis", "Arquivo MP3 Alta Qualidade", "1 revisão gratuita"],
-      cta: "Escolher Essencial",
-      link: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=YOUR_PREF_ID_ESSENCIAL",
-      popular: false
-    },
-    {
-      name: "Plano Premium",
+      name: "Edição Especial 💐",
       price: "147",
-      desc: "O equilíbrio perfeito entre rapidez e emoção.",
-      features: ["Entrega em até 48 horas", "Masterização de Estúdio (WAV)", "Revisões Ilimitadas", "Lyric Video Exclusivo", "Arte da Letra (PDF)"],
-      cta: "Garantir Minha Música",
-      link: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=YOUR_PREF_ID_PREMIUM",
+      desc: "O presente mais emocionante para o Dia das Mães 2026.",
+      features: [
+        "Música 100% Personalizada",
+        "Composição sobre sua História",
+        "Voz e Produção Profissional",
+        "Entrega Garantida para o Dia das Mães",
+        "Revisão Gratuita",
+        "Lyric Video HD (Bônus Exclusivo)"
+      ],
+      cta: "Garantir Minha Música - R$ 147",
+      link: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_ID_147",
       popular: true
-    },
-    {
-      name: "Plano VIP Experience",
-      price: "247",
-      desc: "A experiência definitiva de homenagem.",
-      features: ["Tudo do Premium", "Entrega em 24 horas", "Consultoria via WhatsApp", "Vídeo de Reação Editado", "Quadro com QR Code (Digital)"],
-      cta: "Escolher VIP",
-      link: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=YOUR_PREF_ID_VIP",
-      popular: false
     }
   ];
 
   return (
     <section id="precos" className="bg-[#0d0d0d] px-6 md:px-12 py-40 content-visibility-auto border-t border-white/5">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="text-center mb-32">
+      <div className="max-w-[700px] mx-auto">
+        <div className="text-center mb-24">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-[0.65rem] tracking-[0.5em] uppercase text-gold mb-8 font-black"
           >
-            Investimento em Memória
+            Oferta de Lançamento
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -103,43 +92,37 @@ export function Pricing() {
             viewport={{ once: true }}
             className="font-serif text-4xl md:text-7xl font-light text-white mb-10"
           >
-            Escolha como quer <em className="italic text-gold">surpreender</em>
+            Um presente <em className="italic text-gold">eterno</em>
           </motion.h2>
-          <p className="text-white/40 max-w-[700px] mx-auto text-xl font-light leading-relaxed">
-            Três caminhos para criar o presente mais emocionante da vida dela. Todos com garantia de satisfação AuraMusical e pagamento seguro via Mercado Pago.
+          <p className="text-white/40 text-xl font-light leading-relaxed">
+            Aproveite a condição única de R$ 297 por apenas R$ 147. <br />
+            Vagas limitadas para garantir a entrega artesanal.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
+        <div className="max-w-[500px] mx-auto">
           {plans.map((plan, i) => (
             <motion.div 
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.2, duration: 0.8 }}
-              className={`relative p-8 md:p-14 flex flex-col transition-all duration-500 ${
-                plan.popular 
-                  ? 'bg-gold/[0.02] border-2 border-gold shadow-[0_0_80px_rgba(201,169,110,0.1)] scale-105 z-10' 
-                  : 'bg-white/[0.01] border border-white/5 hover:border-white/10'
-              }`}
+              className="relative p-10 md:p-14 bg-gold/[0.02] border-2 border-gold shadow-[0_0_80px_rgba(201,169,110,0.1)] flex flex-col transition-all duration-500"
             >
-              {plan.popular && (
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold text-black-pure text-[0.7rem] font-black px-8 py-2.5 uppercase tracking-[0.3em] shadow-2xl">
-                  Mais Escolhido
-                </div>
-              )}
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold text-black-pure text-[0.7rem] font-black px-8 py-2.5 uppercase tracking-[0.3em] shadow-2xl">
+                OFERTA DIA DAS MÃES
+              </div>
               
-              <div className="text-[0.7rem] tracking-[0.4em] uppercase text-white/30 mb-10 font-black">{plan.name}</div>
-              <div className="flex items-baseline gap-3 mb-6">
+              <div className="text-[0.7rem] tracking-[0.4em] uppercase text-white/30 mb-8 font-black text-center">{plan.name}</div>
+              <div className="flex items-baseline justify-center gap-3 mb-6">
                 <span className="text-2xl text-gold font-light">R$</span>
                 <span className="text-[5.5rem] font-serif text-gold font-light leading-none">{plan.price}</span>
               </div>
-              <p className="text-white/40 text-base mb-12 font-light leading-relaxed">{plan.desc}</p>
+              <p className="text-white/40 text-center text-sm mb-12 font-light leading-relaxed italic">{plan.desc}</p>
               
-              <ul className="space-y-6 mb-16 flex-grow">
+              <ul className="space-y-6 mb-16">
                 {plan.features.map((f, idx) => (
-                  <li key={idx} className="flex items-start gap-5 text-[1rem] text-white/60 font-light">
+                  <li key={idx} className="flex items-start gap-4 text-[1rem] text-white/60 font-light">
                     <Check size={18} className="text-gold mt-1 shrink-0" />
                     <span>{f}</span>
                   </li>
@@ -147,28 +130,17 @@ export function Pricing() {
               </ul>
 
               <div className="space-y-8">
-                <div className="flex items-center gap-4 mb-2">
-                  <input type="checkbox" id={`terms-${i}`} className="w-5 h-5 rounded border-white/10 bg-white/5 text-gold focus:ring-gold" required />
-                  <label htmlFor={`terms-${i}`} className="text-[0.6rem] text-white/20 uppercase tracking-[0.3em] leading-tight font-bold">
-                    Aceito os <a href="#termos" className="text-gold/40 underline">termos</a> e <a href="#reembolso" className="text-gold/40 underline">política</a>
-                  </label>
-                </div>
-                
                 <a 
-                  href={plan.link}
-                  className={`block text-center py-7 text-[0.9rem] tracking-[0.4em] uppercase font-black transition-all duration-500 ${
-                    plan.popular 
-                      ? 'bg-gold text-black-pure hover:bg-white hover:shadow-[0_20px_60px_rgba(255,255,255,0.1)]' 
-                      : 'border border-gold/30 text-gold hover:bg-gold hover:text-black-pure'
-                  }`}
+                  href="#criar"
+                  className="block text-center py-7 text-[0.9rem] tracking-[0.4em] uppercase font-black bg-gold text-black-pure hover:bg-white hover:shadow-[0_20px_60px_rgba(255,255,255,0.1)] transition-all duration-500"
                 >
                   {plan.cta}
                 </a>
                 
-                <div className="flex justify-center items-center gap-6 opacity-20 grayscale hover:grayscale-0 transition-all duration-500">
+                <div className="flex justify-center items-center gap-6 opacity-20 grayscale">
                   <ShieldCheck size={16} className="text-white" />
                   <CreditCard size={16} className="text-white" />
-                  <span className="text-[0.65rem] uppercase tracking-[0.4em] text-white font-black">Mercado Pago</span>
+                  <span className="text-[0.65rem] uppercase tracking-[0.4em] text-white font-black">Pagamento Seguro</span>
                 </div>
               </div>
             </motion.div>

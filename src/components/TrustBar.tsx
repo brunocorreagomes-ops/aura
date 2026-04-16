@@ -30,18 +30,18 @@ export function HowItWorks() {
   const steps = [
     { 
       num: "01", 
-      title: "Resgate as Memórias", 
-      desc: "Você nos conta os detalhes, apelidos e momentos que tornam sua mãe única através de um formulário sensível e guiado." 
+      title: "Você conta sua história", 
+      desc: "Simples assim. Sem complicação. Através de um guia rápido, você nos dá os detalhes que tornam ela especial." 
     },
     { 
       num: "02", 
-      title: "Composição Autoral", 
-      desc: "Nossos compositores transformam sua história em uma letra e melodia exclusivas, gravadas com alma e perfeição técnica." 
+      title: "Nós criamos sua música", 
+      desc: "Nossos compositores transformam suas palavras em uma letra e melodia exclusivas." 
     },
     { 
       num: "03", 
-      title: "A Entrega da Emoção", 
-      desc: "Em até 24h você recebe a música e o Lyric Video para criar o momento mais inesquecível da vida dela." 
+      title: "Você emociona sua mãe", 
+      desc: "Você recebe o presente perfeito para criar o momento mais inesquecível da vida dela." 
     },
   ];
 
@@ -79,10 +79,8 @@ export function HowItWorks() {
 
 export function AudioSamples() {
   const samples = [
-    { genre: "Acústico / Piano", title: "O Colo que é Meu Mundo", desc: "Uma homenagem profunda sobre gratidão e as raízes que nos sustentam." },
-    { genre: "MPB Contemporânea", title: "Força de Mulher", desc: "Ritmo vibrante que celebra a resiliência e a luz que só uma mãe tem." },
-    { genre: "Sertanejo Suave", title: "Rainha do Meu Lar", desc: "Melodia acolhedora para mães que são o porto seguro de toda a família." },
-    { genre: "Pop Orquestral", title: "Eterna Gratidão", desc: "Arranjo cinematográfico para honrar uma vida inteira de amor e dedicação." },
+    { genre: "Para Dona Maria – de seu filho Lucas", title: "O Colo que é Meu Mundo", desc: "Uma homenagem profunda sobre gratidão e as raízes que nos sustentam." },
+    { genre: "Para a melhor mãe do mundo", title: "Força de Mulher", desc: "Ritmo vibrante que celebra a resiliência e a luz que só uma mãe tem." },
   ];
 
   return (
@@ -90,14 +88,14 @@ export function AudioSamples() {
       <div className="max-w-[1100px] mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-24">
           <div className="max-w-[650px]">
-            <div className="text-[0.65rem] tracking-[0.5em] uppercase text-gold mb-8 font-black">Galeria de Emoções</div>
+            <div className="text-[0.65rem] tracking-[0.5em] uppercase text-gold mb-8 font-black">Prova Real</div>
             <h2 className="font-serif text-4xl md:text-7xl font-light text-white leading-tight">
-              Ouça o que podemos <br />
-              <em className="italic text-gold">fazer por ela</em>
+              Ouça antes de <br />
+              <em className="italic text-gold">decidir</em>
             </h2>
           </div>
-          <p className="text-white/30 text-xl font-light max-w-[400px] leading-relaxed">
-            Cada música é uma digital única. Sinta a qualidade e a sensibilidade de nossas composições autorais.
+          <p className="text-white/30 text-xl font-light max-w-[400px] leading-relaxed italic">
+            "Insight: concorrentes que deixam ouvir antes convertem mais"
           </p>
         </div>
 
