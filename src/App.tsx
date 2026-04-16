@@ -44,15 +44,11 @@ export default function App() {
 
   return (
     <HelmetProvider>
-      <div className="grain min-h-screen font-sans selection:bg-primary selection:text-bg-deep bg-bg-deep text-white">
+      <div className="min-h-screen font-sans selection:bg-gold selection:text-white-pure bg-off-white text-deep-black">
         <SEO />
         <main>
           <MotherDayStandard />
         </main>
-        <Suspense fallback={null}>
-          <Footer />
-          <FloatingElements />
-        </Suspense>
       </div>
     </HelmetProvider>
   );

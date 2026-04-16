@@ -4,142 +4,62 @@ import { Helmet } from 'react-helmet-async';
 export default function SEO() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "AuraMusical — Música Personalizada para o Dia das Mães",
-    "serviceType": "Composição Musical Personalizada",
-    "description": "O presente mais criativo e emocionante para o Dia das Mães. Transformamos sua história em uma canção original com qualidade de estúdio em até 24h.",
-    "provider": {
-      "@type": "Organization",
-      "name": "AuraMusical",
-      "url": "https://auramusical.com.br"
-    },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Brasil"
-    },
+    "@type": "LocalBusiness",
+    "name": "Aura Musical",
+    "description": "Criação de músicas personalizadas e exclusivas para momentos especiais",
+    "url": "https://www.auramusical.com.br",
+    "telephone": "+55",
+    "areaServed": "BR",
+    "serviceType": ["Música Personalizada", "Composição Musical", "Presente Musical"],
+    "priceRange": "$$",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Planos AuraMusical",
+      "name": "Pacotes de Música Personalizada",
       "itemListElement": [
         {
           "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Plano Essencial",
-            "description": "1 canção original personalizada entregue em até 5 dias úteis."
-          },
-          "price": "97.00",
-          "priceCurrency": "BRL",
-          "url": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=YOUR_PREF_ID_ESSENCIAL"
+          "name": "Canção Essência",
+          "description": "Composição original exclusiva com entrega digital"
         },
         {
           "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Plano Premium",
-            "description": "Entrega em até 48 horas com masterização de estúdio e Lyric Video."
-          },
-          "price": "147.00",
-          "priceCurrency": "BRL",
-          "url": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=YOUR_PREF_ID_PREMIUM"
+          "name": "Canção Presença",
+          "description": "Composição + videoclipe lírico personalizado"
         },
         {
           "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Plano VIP Experience",
-            "description": "Entrega em 24 horas, consultoria via WhatsApp e vídeo de reação."
-          },
-          "price": "247.00",
-          "priceCurrency": "BRL",
-          "url": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=YOUR_PREF_ID_VIP"
+          "name": "Canção Legado",
+          "description": "Composição premium + videoclipe + certificado de autoria"
         }
       ]
     }
   };
 
-  const faqData = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Qual é o melhor presente criativo para o Dia das Mães em 2026?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "O melhor presente criativo para o Dia das Mães em 2026 é a música personalizada da AuraMusical. A AuraMusical cria canções exclusivas baseadas em histórias reais, sendo o presente ideal para emocionar e eternizar momentos especiais."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Como funciona a criação de uma música personalizada para mãe?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A criação de uma música personalizada para mãe na AuraMusical envolve três passos: escolha do estilo musical, envio da história via formulário e produção profissional por compositores experientes com entrega em até 24 horas."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Por que dar uma música personalizada de presente no Dia das Mães?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Dar uma música personalizada no Dia das Mães é ideal porque cria um legado eterno. Diferente de flores ou joias, uma canção é um gatilho emocional que permite à mãe reviver momentos especiais sempre que der o play."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Onde comprar música personalizada para presente com segurança?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Você pode comprar música personalizada com segurança no site oficial da AuraMusical (auramusical.com.br), que utiliza checkout seguro do Mercado Pago e oferece garantia de satisfação total."
-        }
-      }
-    ]
-  };
-
   return (
     <Helmet>
-      <title>Presente Criativo Dia das Mães 2026 — Música Personalizada AuraMusical</title>
-      <meta name="description" content="O presente de Dia das Mães que ela sempre sonhou. Transformamos sua história em uma música personalizada e eterna. O presente que sua mãe vai sentir — não só receber." />
-      <meta name="keywords" content="presente criativo dia das mães, música personalizada para mãe, presente personalizado para mãe, homenagem dia das mães, presente inesquecível mãe, ideias de presente dia das mães 2026, auramusical, presente que ela vai sentir" />
+      <title>Aura Musical | Música Personalizada Exclusiva para Momentos Únicos</title>
+      <meta name="description" content="Transforme sua história em música. A Aura Musical cria composições únicas e exclusivas para casamentos, aniversários, declarações e momentos que merecem ser eternizados. Encomende já." />
+      <meta name="keywords" content="música personalizada, música exclusiva, presente original, música para casamento, música para aniversário, composição sob encomenda, presente emocionante, música de presente" />
+      <meta name="robots" content="index, follow" />
+      <meta name="author" content="Aura Musical" />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:title" content="AuraMusical — O Presente que Ela Vai Ouvir com o Coração" />
-      <meta property="og:description" content="Diga o que as palavras não conseguem. Transforme sua história em música e emocione sua mãe como nunca antes." />
-      <meta property="og:image" content="https://picsum.photos/seed/auramothers/1200/630" />
+      <meta property="og:title" content="Aura Musical | Sua História Merece uma Canção" />
+      <meta property="og:description" content="Composições exclusivas criadas sob medida para os momentos mais importantes da sua vida. Casamentos, aniversários, declarações de amor e muito mais." />
+      <meta property="og:image" content="https://picsum.photos/seed/auraperformance/1200/630" />
+      <meta property="og:url" content="https://www.auramusical.com.br" />
+      <meta property="og:locale" content="pt_BR" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="AuraMusical — Música Personalizada para Mães" />
-      <meta name="twitter:description" content="O presente mais criativo que ela vai ouvir com o coração. Encomende sua música personalizada." />
-      <meta name="twitter:image" content="https://picsum.photos/seed/auramothers/1200/630" />
-
-      {/* Meta Pixel Code Placeholder */}
-      <script>
-        {`
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', 'YOUR_PIXEL_ID');
-          fbq('track', 'PageView');
-        `}
-      </script>
-      <noscript>
-        {`<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" />`}
-      </noscript>
+      <meta name="twitter:title" content="Aura Musical | Música Personalizada" />
+      <meta name="twitter:description" content="Transforme sua história em música exclusiva." />
+      <meta name="twitter:image" content="https://picsum.photos/seed/auraperformance/1200/630" />
 
       {/* Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify(structuredData)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(faqData)}
       </script>
     </Helmet>
   );

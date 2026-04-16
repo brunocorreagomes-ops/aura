@@ -19,9 +19,9 @@ export function Upsell({ type, onNext, onAccept }: UpsellProps) {
   const isUpsell1 = type === 'upsell1';
 
   return (
-    <div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center px-6 py-20">
+    <div className="min-h-screen bg-off-white flex items-center justify-center px-6 py-20">
       <div className="max-w-[800px] w-full">
-        <div className="w-full h-1.5 bg-white/5 rounded-full mb-12 overflow-hidden">
+        <div className="w-full h-1.5 bg-deep-black/5 rounded-full mb-12 overflow-hidden">
           <motion.div 
             initial={{ width: 0 }}
             animate={{ width: isUpsell1 ? '50%' : '80%' }}
@@ -32,7 +32,7 @@ export function Upsell({ type, onNext, onAccept }: UpsellProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/[0.02] border border-gold/20 p-8 md:p-12 rounded-3xl text-center relative overflow-hidden"
+          className="bg-white border border-gold/20 p-8 md:p-12 rounded-3xl text-center relative overflow-hidden shadow-2xl"
         >
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-50" />
           
@@ -40,7 +40,7 @@ export function Upsell({ type, onNext, onAccept }: UpsellProps) {
             {isUpsell1 ? "QUASE LÁ! TURBINE SUA HOMENAGEM" : "ÚLTIMA CHANCE... DESCONTO LIBERADO"}
           </p>
 
-          <h1 className="font-serif text-3xl md:text-5xl text-white mb-8 leading-tight">
+          <h1 className="font-serif text-3xl md:text-5xl text-deep-black mb-8 leading-tight">
             {isUpsell1 ? (
               <>Dê um toque <em className="italic text-gold">profissional</em> extra</>
             ) : (
@@ -70,16 +70,16 @@ export function Upsell({ type, onNext, onAccept }: UpsellProps) {
                   desc: "Capa e publicação digital."
                 }
               ].map((opt, i) => (
-                <div key={i} className="bg-black/40 border border-white/5 p-6 rounded-2xl flex flex-col justify-between hover:border-gold/30 transition-all group">
+                <div key={i} className="bg-cream/20 border border-deep-black/5 p-6 rounded-2xl flex flex-col justify-between hover:border-gold/30 transition-all group">
                   <div>
-                    <h3 className="text-white font-serif text-lg mb-2">{opt.title}</h3>
-                    <p className="text-white/40 text-[0.7rem] mb-4">{opt.desc}</p>
+                    <h3 className="text-deep-black font-serif text-lg mb-2">{opt.title}</h3>
+                    <p className="text-text-muted text-[0.7rem] mb-4">{opt.desc}</p>
                   </div>
                   <div>
                     <div className="text-2xl font-black text-gold mb-4">R$ {opt.price}</div>
                     <button 
                       onClick={() => onAccept(opt.link)}
-                      className="w-full bg-white/5 border border-white/10 text-white text-[0.6rem] py-3 uppercase tracking-widest font-black hover:bg-gold hover:text-black-pure transition-all"
+                      className="w-full bg-deep-black text-white-pure text-[0.6rem] py-3 uppercase tracking-widest font-black hover:bg-gold hover:text-deep-black transition-all"
                     >
                       ADICIONAR
                     </button>
@@ -88,14 +88,14 @@ export function Upsell({ type, onNext, onAccept }: UpsellProps) {
               ))}
             </div>
           ) : (
-            <div className="bg-black/40 rounded-2xl p-8 mb-10 border border-white/5 max-w-[500px] mx-auto">
-              <p className="text-white/30 text-xs uppercase tracking-widest mb-2">De R$ 49 por apenas:</p>
-              <div className="text-6xl font-black text-white mb-6">
+            <div className="bg-cream/20 rounded-2xl p-8 mb-10 border border-deep-black/5 max-w-[500px] mx-auto">
+              <p className="text-text-muted text-xs uppercase tracking-widest mb-2">De R$ 49 por apenas:</p>
+              <div className="text-6xl font-black text-deep-black mb-6">
                 <span className="text-gold text-2xl mr-2">R$</span>29
               </div>
               <button 
                 onClick={() => onAccept(LINKS.DESCONTO_VIDEO_29)}
-                className="w-full bg-gold text-black-pure py-6 rounded-xl font-black uppercase tracking-[0.3em] text-sm hover:bg-white transition-all shadow-[0_20px_50px_rgba(201,169,110,0.2)]"
+                className="w-full bg-gold text-deep-black py-6 rounded-xl font-black uppercase tracking-[0.3em] text-sm hover:bg-deep-black hover:text-white-pure transition-all shadow-xl"
               >
                 QUERO O VÍDEO COM DESCONTO 🎬
               </button>
@@ -105,7 +105,7 @@ export function Upsell({ type, onNext, onAccept }: UpsellProps) {
           <div className="flex flex-col gap-6">
             <button 
               onClick={onNext}
-              className="text-white/20 hover:text-white/40 transition-colors text-[0.7rem] uppercase tracking-[0.3em] font-bold flex items-center justify-center gap-2"
+              className="text-deep-black/20 hover:text-deep-black/40 transition-colors text-[0.7rem] uppercase tracking-[0.3em] font-bold flex items-center justify-center gap-2"
             >
               <XCircle size={14} />
               {isUpsell1 ? "Não, continuar para finalização" : "Não, obrigado. Prefiro ficar sem o vídeo."}

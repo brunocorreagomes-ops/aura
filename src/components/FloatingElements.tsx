@@ -19,10 +19,10 @@ export function FloatingElements() {
       </motion.a>
 
       {/* Sticky Mobile CTA */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-[60] p-4 bg-bg-deep/80 backdrop-blur-md border-t border-white/10">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-[60] p-4 bg-off-white/80 backdrop-blur-md border-t border-deep-black/5">
         <a 
           href="#criar" 
-          className="flex items-center justify-center gap-3 w-full bg-primary text-bg-deep py-4 rounded-lg font-black uppercase tracking-widest text-sm shadow-[0_-10px_30px_rgba(30,202,211,0.2)]"
+          className="flex items-center justify-center gap-3 w-full bg-deep-black text-white-pure py-4 rounded-lg font-black uppercase tracking-widest text-sm shadow-[0_-10px_30px_rgba(26,26,26,0.1)] hover:bg-gold hover:text-deep-black"
         >
           Criar Minha Música <ArrowRight size={18} />
         </a>
