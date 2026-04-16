@@ -94,9 +94,6 @@ export function AudioSamples() {
               <em className="italic text-gold">decidir</em>
             </h2>
           </div>
-          <p className="text-white/30 text-xl font-light max-w-[400px] leading-relaxed italic">
-            "Insight: concorrentes que deixam ouvir antes convertem mais"
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
