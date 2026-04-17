@@ -52,6 +52,57 @@ export function MotherDayStandard() {
     { id: '3', title: 'História de Vida', type: 'Orquestral', duration: '4:10', genre: 'Clássico / Contemporâneo' },
   ];
 
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('submitting');
+    
+    const formData = new FormData(e.currentTarget);
+    const orderData = {
+      userName: formData.get('userName') as string,
+      motherName: formData.get('motherName') as string,
+      story: formData.get('story') as string,
+      style: formData.get('style') as string,
+      whatsapp: formData.get('whatsapp') as string,
+      email: formData.get('email') as string,
+    };
+
+    // Save temporary data to retrieve on completion
+    localStorage.setItem('aura_full_data', JSON.stringify({
+      ...orderData,
+      targetRelation: 'Mãe',
+      targetDate: '2026-05-10',
+      express: false
+    }));
+
+    try {
+      const response = await fetch('/api/create-preference', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: `Música de Dia das Mães para ${orderData.motherName}`,
+          unit_price: 197,
+          quantity: 1,
+          metadata: {
+            ...orderData,
+            orderId: `AURA-${Date.now()}`
+          }
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.init_point) {
+        window.location.href = result.init_point;
+      } else {
+        throw new Error(result.error || 'Erro ao gerar checkout');
+      }
+    } catch (error) {
+      console.error("Erro ao iniciar pagamento:", error);
+      setStatus('idle');
+      // No alert, just log and reset
+    }
+  };
+
   const steps = [
     { num: "1", title: "Conte a história dela", desc: "Dê detalhes sobre memórias, apelidos e o que torna o vínculo de vocês especial." },
     { num: "2", title: "Escolha o estilo musical", desc: "Do sertanejo ao MPB, nossos artistas darão o tom perfeito para a emoção." },
@@ -330,27 +381,27 @@ export function MotherDayStandard() {
                 <h2 className="font-serif text-4xl md:text-6xl font-black mb-10">O começo da <br />eternidade</h2>
               </div>
 
-              <form onSubmit={(e) => { e.preventDefault(); setStatus('submitting'); setTimeout(() => window.location.href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=YOUR_ID", 1500); }} className="space-y-10 bg-off-white p-8 md:p-16 border border-deep-black/5 shadow-2xl">
+              <form onSubmit={handleFormSubmit} className="space-y-10 bg-off-white p-8 md:p-16 border border-deep-black/5 shadow-2xl">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-3">
                     <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">Seu Nome</label>
-                    <input required type="text" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" />
+                    <input name="userName" required type="text" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" />
                   </div>
                   <div className="space-y-3">
                     <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">Nome da Mãe</label>
-                    <input required type="text" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" />
+                    <input name="motherName" required type="text" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" />
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">Conte um momento ou história marcante</label>
-                  <textarea rows={5} required className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold resize-none" placeholder="Ex: Aquele bolo que só ela sabe fazer, uma viagem marcante ou um conselho que mudou sua vida..."></textarea>
+                  <textarea name="story" rows={5} required className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold resize-none" placeholder="Ex: Aquele bolo que só ela sabe fazer, uma viagem marcante ou um conselho que mudou sua vida..."></textarea>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-3">
                     <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">Estilo da Canção</label>
-                    <select className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold cursor-pointer">
+                    <select name="style" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold cursor-pointer">
                       <option>MPB / Acústico</option>
                       <option>Sertanejo Raiz</option>
                       <option>Pop Romântico</option>
@@ -359,13 +410,13 @@ export function MotherDayStandard() {
                   </div>
                   <div className="space-y-3">
                     <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">WhatsApp de Contato</label>
-                    <input required type="tel" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" placeholder="(XX) XXXXX-XXXX" />
+                    <input name="whatsapp" required type="tel" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" placeholder="(XX) XXXXX-XXXX" />
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">Seu Melhor E-mail</label>
-                  <input required type="email" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" />
+                  <input name="email" required type="email" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" />
                 </div>
 
                 <button 
