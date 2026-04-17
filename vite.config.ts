@@ -1,34 +1,37 @@
-import { defineConfig, loadEnv } from 'vite';
-import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
 import path from 'path';
+import { defineConfig, loadEnv } from 'vite';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   return {
-    // 🚨 ESSENCIAL: nunca dinâmico em produção
-    base: '/',
-
+    base: '/', // 🔥 FIX CRÍTICO (remove variável quebrada)
+    
     plugins: [
       react(),
-      tailwindcss(),
+      tailwindcss()
     ],
+
+    define: {
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+    },
 
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src'),
+        '@': path.resolve(__dirname, '.'),
       },
-    },
-
-    define: {
-      // seguro para build (não quebra se undefined)
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY ?? ''),
     },
 
     build: {
       outDir: 'dist',
+      assetsDir: 'assets',
       sourcemap: false,
+    },
+
+    server: {
+      hmr: process.env.DISABLE_HMR !== 'true',
     },
   };
 });
