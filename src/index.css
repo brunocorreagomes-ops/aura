@@ -1,13 +1,17 @@
-/* Google Fonts */
+/* =========================
+   GOOGLE FONTS
+========================= */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600&display=swap');
 
-/* Tailwind core (VERSÃO ESTÁVEL) */
+/* =========================
+   TAILWIND (ESTÁVEL VITE + VERCEL)
+========================= */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* =========================
-   DESIGN TOKENS (SAFE)
+   DESIGN TOKENS
 ========================= */
 :root {
   --font-serif: "Playfair Display", serif;
@@ -28,7 +32,7 @@
 }
 
 /* =========================
-   BASE
+   RESET BASE
 ========================= */
 html {
   scroll-behavior: smooth;
@@ -36,13 +40,17 @@ html {
 }
 
 body {
-  background-color: var(--color-off-white);
+  margin: 0;
+  padding: 0;
+  background: var(--color-off-white);
   color: var(--color-deep-black);
   overflow-x: hidden;
   font-family: var(--font-sans);
 }
 
-/* Helpers de fonte */
+/* =========================
+   TYPO HELPERS
+========================= */
 .font-serif {
   font-family: var(--font-serif);
 }
@@ -52,17 +60,18 @@ body {
 }
 
 /* =========================
-   NOISE OVERLAY
+   NOISE OVERLAY (SAFE)
 ========================= */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none;
-  z-index: 50;
+  z-index: 0;
   opacity: 0.5;
   transform: translateZ(0);
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
 /* =========================
@@ -84,7 +93,7 @@ body::before {
 }
 
 /* =========================
-   GLASSMORPHISM
+   GLASS EFFECTS
 ========================= */
 .glass {
   background: rgba(255, 255, 255, 0.7);
