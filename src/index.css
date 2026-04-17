@@ -1,14 +1,6 @@
-/* =========================
-   GOOGLE FONTS
-========================= */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600&display=swap');
 
-/* =========================
-   TAILWIND (ESTÁVEL VITE + VERCEL)
-========================= */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* =========================
    DESIGN TOKENS
@@ -31,9 +23,7 @@
   --color-text-muted: #4A4A4A;
 }
 
-/* =========================
-   RESET BASE
-========================= */
+/* BASE */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -44,13 +34,11 @@ body {
   padding: 0;
   background: var(--color-off-white);
   color: var(--color-deep-black);
-  overflow-x: hidden;
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
-/* =========================
-   TYPO HELPERS
-========================= */
+/* TYPO */
 .font-serif {
   font-family: var(--font-serif);
 }
@@ -59,9 +47,7 @@ body {
   font-family: var(--font-sans);
 }
 
-/* =========================
-   NOISE OVERLAY (SAFE)
-========================= */
+/* NOISE */
 body::before {
   content: "";
   position: fixed;
@@ -69,42 +55,29 @@ body::before {
   pointer-events: none;
   z-index: 0;
   opacity: 0.5;
-  transform: translateZ(0);
 
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
-/* =========================
-   ANIMATION
-========================= */
+/* ANIMATION */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-up {
   animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* =========================
-   GLASS EFFECTS
-========================= */
+/* GLASS */
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .glass-dark {
   background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
