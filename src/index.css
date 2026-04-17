@@ -1,75 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;600&display=swap');
 @import "tailwindcss";
 
-/* =========================
-   DESIGN TOKENS
-========================= */
-:root {
+@theme {
   --font-serif: "Playfair Display", serif;
   --font-sans: "Montserrat", sans-serif;
-
+  
   --color-primary: #D4AF37;
   --color-gold: #D4AF37;
   --color-gold-light: #F5E6BE;
-
   --color-off-white: #FCFBF7;
   --color-cream: #F5F5DC;
-
   --color-deep-black: #1A1A1A;
   --color-black-soft: #2A2A2A;
-
+  --color-white-pure: #FFFFFF;
   --color-text-main: #1A1A1A;
   --color-text-muted: #4A4A4A;
 }
 
-/* BASE */
+:root {
+  --off-white: #FCFBF7;
+  --deep-black: #1A1A1A;
+  --gold: #D4AF37;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: var(--color-off-white);
-  color: var(--color-deep-black);
-  font-family: var(--font-sans);
+  background-color: var(--off-white);
+  color: var(--deep-black);
   overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
 }
 
-/* TYPO */
-.font-serif {
-  font-family: var(--font-serif);
-}
+.font-serif { font-family: "Playfair Display", serif; }
+.font-sans { font-family: "Montserrat", sans-serif; }
 
-.font-sans {
-  font-family: var(--font-sans);
-}
-
-/* NOISE */
+/* Noise Texture Overlay */
 body::before {
-  content: "";
+  content: '';
   position: fixed;
   inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.5;
-
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.5;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-/* ANIMATION */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-up {
   animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* GLASS */
+/* Glassmorphism helpers */
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);

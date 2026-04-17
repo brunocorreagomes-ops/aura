@@ -1,38 +1,26 @@
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
+import {defineConfig, loadEnv} from 'vite';
 
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
-
+export default defineConfig(({mode}) => {
+  const env = loadEnv(mode, '.', '');
+  const basePath = process.env.VITE_BASE_PATH || env.VITE_BASE_PATH || '/';
   return {
-    base: './', // 🔥 ISSO AQUI É O MAIS SEGURO PRA VERCEL + SPA
-
-    plugins: [
-      react(),
-      tailwindcss()
-    ],
-
+    base: basePath,
+    plugins: [react(), tailwindcss()],
     define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
-
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src'),
+        '@': path.resolve(__dirname, '.'),
       },
     },
-
-    build: {
-      outDir: 'dist',
-      emptyOutDir: true, // 🔥 MUITO IMPORTANTE
-      assetsDir: 'assets',
-      sourcemap: false,
-    },
-
     server: {
-      hmr: true,
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+      hmr: process.env.DISABLE_HMR !== 'true',
     },
   };
 });
