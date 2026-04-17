@@ -21,6 +21,12 @@ export function Upsell({ type, onNext, onAccept }: UpsellProps) {
   return (
     <div className="min-h-screen bg-off-white flex items-center justify-center px-6 py-20">
       <div className="max-w-[800px] w-full">
+        <img 
+          src="https://i.ibb.co/ycWv9sZF/MUSICAL-2.png" 
+          alt="Aura Musical Logo" 
+          className="h-12 w-auto object-contain mx-auto mb-10"
+          referrerPolicy="no-referrer"
+        />
         <div className="w-full h-1.5 bg-deep-black/5 rounded-full mb-12 overflow-hidden">
           <motion.div 
             initial={{ width: 0 }}

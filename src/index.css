@@ -8,18 +8,19 @@
   --color-primary: #D4AF37;
   --color-gold: #D4AF37;
   --color-gold-light: #F5E6BE;
-  --color-off-white: #FCFBF7;
+  --color-off-white: #FAF9F6;
   --color-cream: #F5F5DC;
-  --color-deep-black: #1A1A1A;
-  --color-black-soft: #2A2A2A;
+  --color-warm-charcoal: #2C2A29;
+  --color-deep-black: #2C2A29;
+  --color-black-soft: #3D3B3A;
   --color-white-pure: #FFFFFF;
-  --color-text-main: #1A1A1A;
-  --color-text-muted: #4A4A4A;
+  --color-text-main: #2C2A29;
+  --color-text-muted: #5A5857;
 }
 
 :root {
-  --off-white: #FCFBF7;
-  --deep-black: #1A1A1A;
+  --off-white: #FAF9F6;
+  --deep-black: #2C2A29;
   --gold: #D4AF37;
 }
 

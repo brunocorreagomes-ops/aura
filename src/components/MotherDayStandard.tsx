@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { Play, Pause, Check, ArrowRight, ShieldCheck, Music, Clock, Star, Heart, Menu, X, Instagram, Facebook, Youtube, MessageCircle, ChevronDown, Calendar } from 'lucide-react';
 
 const WHATSAPP_NUMBER = "5511942789109";
@@ -11,6 +11,9 @@ export function MotherDayStandard() {
   const [playingAudio, setPlayingAudio] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const formRef = useRef<HTMLDivElement>(null);
+
+  const { scrollY } = useScroll();
+  const yParallax = useTransform(scrollY, [0, 800], [0, 200]);
 
   // Countdown logic
   const [timeLeft, setTimeLeft] = useState({
@@ -119,16 +122,19 @@ export function MotherDayStandard() {
   return (
     <div className="bg-off-white text-deep-black selection:bg-gold selection:text-white-pure">
       {/* Urgency Banner */}
-      <div className="bg-deep-black text-white-pure py-2 px-6 flex flex-col md:flex-row justify-center items-center gap-4 text-[0.65rem] md:text-[0.75rem] font-bold uppercase tracking-[0.2em]">
-        <span className="text-gold flex items-center gap-2"><Calendar size={14} /> Faltam {timeLeft.days}d {timeLeft.hours}h {timeLeft.mins}m {timeLeft.secs}s</span>
-        <span className="hidden md:inline text-white/40">|</span>
-        <span>Peça até 03 de Maio para garantir a entrega a tempo</span>
+      <div className="sticky top-0 z-[60] bg-deep-black text-white-pure h-10 px-6 flex justify-center items-center text-[0.65rem] md:text-[0.7rem] font-bold uppercase tracking-[0.2em]">
+        <span className="text-gold flex items-center gap-2">Vagas limitadas para entrega até o Dia das Mães.</span>
       </div>
 
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 glass px-6 md:px-16 py-5 flex justify-between items-center bg-off-white/80">
-        <a href="#" className="font-serif text-xl md:text-2xl font-black tracking-tight text-deep-black uppercase flex items-center gap-2">
-          <Music className="text-gold" size={24} /> AURA MUSICAL
+      <nav className="sticky top-10 z-50 glass px-6 md:px-16 py-5 flex justify-between items-center bg-off-white/80">
+        <a href="#" className="flex items-center">
+          <img 
+            src="https://i.ibb.co/ycWv9sZF/MUSICAL-2.png" 
+            alt="Aura Musical Logo" 
+            className="h-8 md:h-12 w-auto object-contain"
+            referrerPolicy="no-referrer"
+          />
         </a>
         
         <div className="hidden lg:flex items-center gap-10 font-sans text-[0.7rem] font-bold tracking-widest uppercase text-text-main">
@@ -152,6 +158,12 @@ export function MotherDayStandard() {
             exit={{ opacity: 0, x: 20 }}
             className="fixed inset-0 z-40 bg-off-white flex flex-col items-center justify-center gap-12 lg:hidden pt-20"
           >
+            <img 
+              src="https://i.ibb.co/ycWv9sZF/MUSICAL-2.png" 
+              alt="Aura Musical Logo" 
+              className="h-12 w-auto object-contain mb-8"
+              referrerPolicy="no-referrer"
+            />
             {['Processo', 'Exemplos', 'FAQ'].map(item => (
               <a key={item} href={`#${item.toLowerCase()}`} className="font-sans text-xl font-black uppercase tracking-widest text-deep-black" onClick={() => setMobileMenuOpen(false)}>{item}</a>
             ))}
@@ -161,7 +173,20 @@ export function MotherDayStandard() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section className="relative py-24 md:py-40 px-6 text-center bg-gradient-to-b from-cream/30 to-off-white">
+      <section className="relative py-24 md:py-40 px-6 text-center overflow-hidden">
+        {/* Cinematic Texture/Background Image Overlay with Parallax */}
+        <motion.div 
+          style={{ y: yParallax }}
+          className="absolute inset-0 z-0 opacity-[0.08]"
+        >
+          <img 
+            src="https://picsum.photos/seed/mother-child/1920/1080?blur=5" 
+            alt="Atmosfera Emocional" 
+            className="w-full h-full object-cover scale-110"
+            referrerPolicy="no-referrer"
+          />
+        </motion.div>
+
         <div className="max-w-[1100px] mx-auto relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 text-gold text-[0.6rem] md:text-[0.7rem] font-bold uppercase tracking-[0.3em] mb-12 animate-fade-up">
             <Heart size={14} fill="currentColor" /> Edição Especial Dia das MÃES 2026
@@ -171,7 +196,7 @@ export function MotherDayStandard() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-serif text-[2.8rem] md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight mb-10 text-deep-black"
+            className="font-serif text-[2.8rem] md:text-7xl lg:text-8xl font-medium leading-[1.05] tracking-tight mb-10 text-deep-black"
           >
             Neste Dia das Mães, Dê a Ela uma <em className="italic font-light text-gold">Emoção</em> que Ficará para Sempre.
           </motion.h1>
@@ -189,53 +214,45 @@ export function MotherDayStandard() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col md:flex-row justify-center items-center gap-6"
+            className="flex flex-col items-center gap-4"
           >
-            <button 
-              onClick={abrirFormulario}
-              className="w-full md:w-auto bg-gold text-deep-black px-14 py-7 font-sans text-[0.85rem] font-black uppercase tracking-widest hover:bg-deep-black hover:text-white-pure transition-all shadow-[0_10px_40px_rgba(212,175,55,0.25)] flex items-center justify-center gap-4"
-            >
-              Começar a Criar <ArrowRight size={18} />
-            </button>
-            <a href="#exemplos" className="w-full md:w-auto font-sans text-[0.85rem] font-bold uppercase tracking-widest text-deep-black hover:opacity-70 transition-all flex items-center justify-center gap-3">
-              <Play size={18} fill="currentColor" /> Ouvir Exemplos
-            </a>
-          </motion.div>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 w-full max-w-2xl">
+              <button 
+                onClick={abrirFormulario}
+                className="w-full md:w-auto bg-gold text-white-pure px-14 py-7 font-sans text-[0.85rem] font-black uppercase tracking-widest hover:bg-deep-black hover:text-white-pure transition-all shadow-xl flex items-center justify-center gap-4"
+              >
+                Começar a Criar <ArrowRight size={18} />
+              </button>
+              <a href="#exemplos" className="w-full md:w-auto font-sans text-[0.85rem] font-bold uppercase tracking-widest text-deep-black hover:opacity-70 transition-all flex items-center justify-center gap-3">
+                <Play size={18} fill="currentColor" /> Ouvir Exemplos
+              </a>
+            </div>
 
-          {/* Social Proof Bar */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-24 pt-10 border-t border-deep-black/5 flex flex-wrap justify-center items-center gap-x-16 gap-y-8"
-          >
-            <div className="flex flex-col items-center">
-              <div className="flex gap-1 text-gold mb-2">
-                {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} fill="currentColor" />)}
+            {/* Social Proof Bar - Relocated below CTA */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mt-4 flex flex-col items-center gap-2"
+            >
+              <div className="flex items-center gap-4">
+                <div className="flex gap-1 text-gold">
+                  {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} fill="currentColor" />)}
+                </div>
+                <span className="text-[0.65rem] uppercase font-bold tracking-widest text-deep-black/60">10.000+ mães presenteadas</span>
               </div>
-              <span className="text-[0.65rem] uppercase font-bold tracking-widest text-deep-black/40">+500 músicas criadas</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="flex -space-x-4">
-                {[1, 2, 3].map(i => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-off-white overflow-hidden bg-cream">
-                    <img src={`https://picsum.photos/seed/mother${i}/100/100`} alt="Avatar" className="w-full h-full object-cover" />
-                  </div>
-                ))}
-              </div>
-              <p className="text-[0.7rem] md:text-[0.8rem] font-medium italic text-text-muted">"Minha mãe chorou quando ouviu..."</p>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Real Examples Player Section */}
-      <section id="exemplos" className="py-24 md:py-40 px-6 bg-deep-black text-white-pure">
+      {/* Real Examples Player Section - Glassmorphism Refactor */}
+      <section id="exemplos" className="py-24 md:py-40 px-6 bg-off-white">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-24">
             <span className="text-gold text-[0.75rem] tracking-[0.4em] uppercase font-black mb-6 block">Prova Emocional</span>
             <h2 className="font-serif text-4xl md:text-7xl font-bold mb-10 leading-tight">Escolha o <em className="italic font-light text-gold">tom</em> da sua homenagem</h2>
-            <p className="font-sans text-white/40 max-w-[600px] mx-auto leading-relaxed">Dê o play e sinta a qualidade cinematográfica das nossas produções. Cada música é um pedaço da história de alguém.</p>
+            <p className="font-sans text-text-muted max-w-[600px] mx-auto leading-relaxed">Dê o play e sinta a qualidade cinematográfica das nossas produções. Cada música é um pedaço da história de alguém.</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -243,30 +260,30 @@ export function MotherDayStandard() {
               {examples.map((ex) => (
                 <div 
                   key={ex.id}
-                  className={`group relative p-8 rounded-2xl border transition-all cursor-pointer flex justify-between items-center ${playingAudio === ex.id ? 'bg-gold/10 border-gold' : 'bg-white/5 border-white/10 hover:border-gold/30'}`}
+                  className={`group relative p-8 rounded-2xl border transition-all cursor-pointer flex justify-between items-center shadow-sm ${playingAudio === ex.id ? 'bg-gold/5 border-gold shadow-md' : 'bg-white border-deep-black/5 hover:border-gold/30 hover:shadow-lg'}`}
                   onClick={() => setPlayingAudio(playingAudio === ex.id ? null : ex.id)}
                 >
                   <div className="flex items-center gap-6">
-                    <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${playingAudio === ex.id ? 'bg-gold text-deep-black' : 'bg-gold/20 text-gold'}`}>
+                    <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${playingAudio === ex.id ? 'bg-gold text-white-pure' : 'bg-gold/10 text-gold group-hover:bg-gold group-hover:text-white-pure'}`}>
                       {playingAudio === ex.id ? <Pause size={24} fill="currentColor" /> : <Play size={24} fill="currentColor" />}
                     </div>
                     <div>
-                      <h4 className="font-serif text-xl font-bold mb-1">{ex.title}</h4>
+                      <h4 className="font-serif text-xl font-bold mb-1 text-deep-black">{ex.title}</h4>
                       <p className="text-[0.75rem] font-bold uppercase tracking-widest text-gold">{ex.type} · {ex.genre}</p>
                     </div>
                   </div>
-                  <span className="text-[0.8rem] text-white/40 font-bold">{ex.duration}</span>
+                  <span className="text-[0.8rem] text-text-muted font-bold">{ex.duration}</span>
                 </div>
               ))}
             </div>
             
             <div className="relative group">
-              <div className="absolute inset-0 bg-gold/20 blur-[100px] rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
-              <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 glass-dark">
-                <img src="https://picsum.photos/seed/reaction/800/450" alt="Mãe Emocionada" className="w-full h-full object-cover opacity-60" />
-                <div className="absolute inset-0 flex items-center justify-center flex-col text-center p-8">
+              <div className="absolute inset-0 bg-gold/5 blur-[100px] rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
+              <div className="relative aspect-video rounded-3xl overflow-hidden border border-deep-black/5 shadow-2xl glass">
+                <img src="https://picsum.photos/seed/reaction-mother-day/800/450" alt="Mãe Emocionada" className="w-full h-full object-cover opacity-80" referrerPolicy="no-referrer" />
+                <div className="absolute inset-0 flex items-center justify-center flex-col text-center p-8 bg-white/40">
                   <Heart className="text-gold mb-6 animate-pulse" size={48} />
-                  <p className="font-sans text-xl italic font-light mb-4 text-white">"Foi o melhor presente da minha vida. Eu não parava de sorrir e chorar ao mesmo tempo."</p>
+                  <p className="font-sans text-xl italic font-light mb-4 text-deep-black">"Foi o melhor presente da minha vida. Eu não parava de sorrir e chorar ao mesmo tempo."</p>
                   <span className="text-gold text-[0.7rem] uppercase font-bold tracking-widest">— Dona Helena, 64 anos</span>
                 </div>
               </div>
@@ -284,7 +301,7 @@ export function MotherDayStandard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
             {steps.map((step, i) => (
               <div key={i} className="text-center group">
-                <div className="w-20 h-20 bg-deep-black text-white-pure rounded-full flex items-center justify-center font-serif text-3xl font-black mb-10 mx-auto group-hover:bg-gold group-hover:text-deep-black transition-all">
+                <div className="w-24 h-24 bg-deep-black text-white-pure rounded-full flex items-center justify-center font-serif text-4xl font-black mb-10 mx-auto group-hover:bg-gold group-hover:text-deep-black transition-all shadow-lg transform group-hover:scale-110">
                   {step.num}
                 </div>
                 <h3 className="font-serif text-2xl font-bold mb-6">{step.title}</h3>
@@ -295,7 +312,7 @@ export function MotherDayStandard() {
           <div className="mt-24 text-center">
              <button 
               onClick={abrirFormulario}
-              className="bg-deep-black text-white-pure px-12 py-6 font-sans text-[0.85rem] font-black uppercase tracking-widest hover:bg-gold hover:text-deep-black transition-all"
+              className="bg-deep-black text-white-pure px-12 py-6 font-sans text-[0.85rem] font-black uppercase tracking-widest hover:bg-gold hover:text-deep-black transition-all shadow-xl"
             >
               Começar Agora
             </button>
@@ -437,8 +454,13 @@ export function MotherDayStandard() {
       <footer className="bg-deep-black text-white-pure py-32 px-6 md:px-16 overflow-hidden relative">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-20 relative z-10">
           <div className="col-span-1 md:col-span-2 space-y-8">
-            <a href="#" className="font-serif text-3xl font-black tracking-tight text-white-pure flex items-center gap-4">
-               <Music className="text-gold" size={32} /> AURA MUSICAL
+            <a href="#" className="flex items-center">
+              <img 
+                src="https://i.ibb.co/ycWv9sZF/MUSICAL-2.png" 
+                alt="Aura Musical Logo" 
+                className="h-10 md:h-16 w-auto object-contain brightness-0 invert" 
+                referrerPolicy="no-referrer"
+              />
             </a>
             <p className="font-sans text-white/40 max-w-[400px] leading-relaxed">
               Transformamos sentimentos em obras de arte sonoras. Cada música é única, feita à mão para eternizar seus momentos mais preciosos.

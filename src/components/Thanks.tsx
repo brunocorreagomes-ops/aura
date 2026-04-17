@@ -24,6 +24,13 @@ export function Thanks() {
         animate={{ opacity: 1, scale: 1 }}
         className="max-w-[600px] w-full text-center"
       >
+        <img 
+          src="https://i.ibb.co/ycWv9sZF/MUSICAL-2.png" 
+          alt="Aura Musical Logo" 
+          className="h-16 w-auto object-contain mx-auto mb-12"
+          referrerPolicy="no-referrer"
+        />
+
         <div className="w-24 h-24 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-10 border border-gold/30 text-gold">
           <CheckCircle2 size={48} />
         </div>
