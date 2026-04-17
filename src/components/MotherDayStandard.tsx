@@ -89,33 +89,19 @@ export function MotherDayStandard() {
       express: false
     }));
 
+    // Send to Make.com Webhook
     try {
-      const response = await fetch('/api/create-preference', {
+      await fetch('https://hook.us2.make.com/fxlsvkiztda3dnxptzcqh8x9yeiy9a9d', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: `Música de Dia das Mães para ${orderData.motherName}`,
-          unit_price: 197,
-          quantity: 1,
-          metadata: {
-            ...orderData,
-            orderId: `AURA-${Date.now()}`
-          }
-        }),
+        body: JSON.stringify(orderData)
       });
-
-      const result = await response.json();
-      
-      if (result.init_point) {
-        window.location.href = result.init_point;
-      } else {
-        throw new Error(result.error || 'Erro ao gerar checkout');
-      }
-    } catch (error) {
-      console.error("Erro ao iniciar pagamento:", error);
-      setStatus('idle');
-      // No alert, just log and reset
+    } catch (err) {
+      console.warn("Make.com Hook failed, continuing with payment anyway.", err);
     }
+
+    // Redirect to the provided Mercado Pago Checkout Pro link
+    window.location.href = "https://mpago.la/33TsCUP";
   };
 
   const steps = [

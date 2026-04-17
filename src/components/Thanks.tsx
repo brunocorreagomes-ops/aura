@@ -7,71 +7,64 @@ const WHATSAPP_NUMBER = "5511942789109";
 export function Thanks() {
   const contactWhatsApp = () => {
     const savedData = localStorage.getItem('aura_full_data');
-    let details = "";
+    let motherName = "[Mãe]";
     if (savedData) {
       const data = JSON.parse(savedData);
-      details = `\n\n*Resumo do Pedido:*\n- Cliente: ${data.userName}\n- Presente para: ${data.targetRelation}\n- Data: ${data.targetDate}\n- Entrega Expressa: ${data.express ? 'Sim' : 'Não'}`;
+      motherName = data.motherName || "[Mãe]";
     }
     
-    const message = encodeURIComponent(`Olá Aura Musical! Acabei de garantir o presente musical de Dia das Mães. Gostaria de enviar os detalhes para a criação da música.${details}`);
+    const message = encodeURIComponent(`Olá! Acabei de garantir a música da minha mãe.`);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
   };
 
+  const savedData = localStorage.getItem('aura_full_data');
+  const motherName = savedData ? JSON.parse(savedData).motherName : "[Mãe]";
+
   return (
-    <div className="min-h-screen bg-off-white flex items-center justify-center px-6 py-20">
+    <div className="min-h-screen bg-off-white flex items-center justify-center px-6 py-20 relative overflow-hidden">
+      {/* Background Texture Overlay */}
+      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+        <img src="https://picsum.photos/seed/texture/1920/1080?blur=10" className="w-full h-full object-cover" alt="" referrerPolicy="no-referrer" />
+      </div>
+
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="max-w-[600px] w-full text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-[700px] w-full text-center relative z-10"
       >
         <img 
           src="https://i.ibb.co/bjkd4Qqz/auralogohorizontal.png" 
           alt="Aura Musical Logo" 
-          className="h-16 w-auto object-contain mx-auto mb-12"
+          className="h-12 md:h-16 w-auto object-contain mx-auto mb-16"
           referrerPolicy="no-referrer"
         />
 
-        <div className="w-24 h-24 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-10 border border-gold/30 text-gold">
-          <CheckCircle2 size={48} />
+        <div className="mb-12">
+          <span className="text-gold text-[0.7rem] tracking-[0.4em] uppercase font-black mb-6 block">Pedido Confirmado</span>
+          <h1 className="font-serif text-4xl md:text-7xl text-deep-black mb-8 leading-[1.1] tracking-tight">
+            Obrigado por escolher a <em className="italic font-light text-gold">Aura Musical!</em>
+          </h1>
+          
+          <div className="w-16 h-[1px] bg-gold/30 mx-auto mb-12" />
+
+          <p className="text-text-muted text-xl md:text-2xl font-light mb-16 leading-relaxed max-w-[550px] mx-auto">
+            Recebemos o seu pedido e a história da <strong className="text-deep-black font-semibold">{motherName}</strong> já está em nosso estúdio para ganhar vida.
+          </p>
         </div>
 
-        <h1 className="font-serif text-4xl md:text-6xl text-deep-black mb-6 leading-tight">
-          Seu presente está sendo <em className="italic text-gold">criado!</em>
-        </h1>
-
-        <p className="text-text-muted text-xl font-light mb-12 leading-relaxed">
-          Parabéns por escolher o presente mais emocionante que sua mãe já recebeu. Agora precisamos dos detalhes para dar vida à sua canção.
-        </p>
-
-        <div className="bg-white border border-deep-black/5 p-8 md:p-10 rounded-3xl text-left mb-12 shadow-xl">
-          <h3 className="text-gold text-[0.7rem] tracking-[0.4em] uppercase font-black mb-8">Próximos Passos:</h3>
-          <ul className="space-y-6">
-            {[
-              "Clique no botão abaixo para falar conosco no WhatsApp.",
-              "Envie o comprovante e os detalhes da história (apelidos, memórias).",
-              "Nossa equipe iniciará a composição imediatamente."
-            ].map((step, i) => (
-              <li key={i} className="flex items-start gap-4 text-text-muted">
-                <div className="w-6 h-6 rounded-full bg-gold/10 flex items-center justify-center text-gold text-xs font-bold shrink-0 mt-1">
-                  {i + 1}
-                </div>
-                <p className="text-lg font-light leading-snug">{step}</p>
-              </li>
-            ))}
-          </ul>
+        <div className="space-y-8">
+          <button 
+            onClick={contactWhatsApp}
+            className="w-full md:w-auto bg-deep-black text-white-pure px-12 py-8 rounded-full font-bold uppercase tracking-[0.3em] text-[0.85rem] hover:bg-gold hover:text-white-pure transition-all shadow-2xl flex items-center justify-center gap-4 group mx-auto"
+          >
+            Falar no WhatsApp
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </button>
+          
+          <p className="text-[0.6rem] text-text-muted uppercase tracking-[0.3em] font-medium opacity-50">
+            Nossa equipe entrará em contato em breve.
+          </p>
         </div>
-
-        <button 
-          onClick={contactWhatsApp}
-          className="w-full bg-deep-black text-white-pure py-8 rounded-2xl font-black uppercase tracking-[0.3em] text-lg hover:bg-gold hover:text-deep-black transition-all shadow-2xl flex items-center justify-center gap-4 group"
-        >
-          FALAR NO WHATSAPP AGORA
-          <MessageSquare size={24} className="group-hover:scale-110 transition-transform" />
-        </button>
-
-        <p className="mt-10 text-white/20 text-[0.7rem] uppercase tracking-[0.4em] font-bold">
-          Aguardamos você para dar vida a essa canção.
-        </p>
       </motion.div>
     </div>
   );
