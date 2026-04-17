@@ -7,11 +7,11 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   return {
-    base: '/', // 🔥 FIX CRÍTICO (remove variável quebrada)
-    
+    base: '/', // fix obrigatório para Vercel
+
     plugins: [
       react(),
-      tailwindcss()
+      tailwindcss(),
     ],
 
     define: {
@@ -20,18 +20,24 @@ export default defineConfig(({ mode }) => {
 
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(process.cwd(), 'src'),
       },
     },
 
     build: {
       outDir: 'dist',
+      emptyOutDir: true, // 🔥 evita lixo de build antigo
       assetsDir: 'assets',
       sourcemap: false,
+      cssCodeSplit: true,
     },
 
     server: {
       hmr: process.env.DISABLE_HMR !== 'true',
+    },
+
+    preview: {
+      port: 4173,
     },
   };
 });
