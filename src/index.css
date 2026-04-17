@@ -5,23 +5,21 @@
   --font-serif: "Playfair Display", serif;
   --font-sans: "Montserrat", sans-serif;
   
-  --color-primary: #D4AF37;
-  --color-gold: #D4AF37;
-  --color-gold-light: #F5E6BE;
-  --color-off-white: #FAF9F6;
-  --color-cream: #F5F5DC;
-  --color-warm-charcoal: #2C2A29;
-  --color-deep-black: #2C2A29;
-  --color-black-soft: #3D3B3A;
+  --color-gold: #C5A059;
+  --color-gold-light: #E8DCC4;
+  --color-gold-muted: #D9C5B2;
+  --color-off-white: #FDFCFB;
+  --color-deep-black: #1F1D1C;
+  --color-text-main: #1F1D1C;
+  --color-text-muted: #6B6865;
+  --color-accent-rose: #E6B8B8;
   --color-white-pure: #FFFFFF;
-  --color-text-main: #2C2A29;
-  --color-text-muted: #5A5857;
 }
 
 :root {
-  --off-white: #FAF9F6;
-  --deep-black: #2C2A29;
-  --gold: #D4AF37;
+  --off-white: #FDFCFB;
+  --deep-black: #1F1D1C;
+  --gold: #C5A059;
 }
 
 html {

@@ -25,7 +25,7 @@ export function Thanks() {
         className="max-w-[600px] w-full text-center"
       >
         <img 
-          src="https://i.ibb.co/ycWv9sZF/MUSICAL-2.png" 
+          src="https://i.ibb.co/bjkd4Qqz/auralogohorizontal.png" 
           alt="Aura Musical Logo" 
           className="h-16 w-auto object-contain mx-auto mb-12"
           referrerPolicy="no-referrer"

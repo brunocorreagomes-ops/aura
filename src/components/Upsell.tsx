@@ -22,7 +22,7 @@ export function Upsell({ type, onNext, onAccept }: UpsellProps) {
     <div className="min-h-screen bg-off-white flex items-center justify-center px-6 py-20">
       <div className="max-w-[800px] w-full">
         <img 
-          src="https://i.ibb.co/ycWv9sZF/MUSICAL-2.png" 
+          src="https://i.ibb.co/bjkd4Qqz/auralogohorizontal.png" 
           alt="Aura Musical Logo" 
           className="h-12 w-auto object-contain mx-auto mb-10"
           referrerPolicy="no-referrer"

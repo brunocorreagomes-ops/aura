@@ -11,9 +11,21 @@ export function MotherDayStandard() {
   const [playingAudio, setPlayingAudio] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const formRef = useRef<HTMLDivElement>(null);
+  const [isCtaVisible, setIsCtaVisible] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
 
   const { scrollY } = useScroll();
   const yParallax = useTransform(scrollY, [0, 800], [0, 200]);
+
+  // Handle Sticky CTA Visibility
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsCtaVisible(!entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (heroRef.current) observer.observe(heroRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   // Countdown logic
   const [timeLeft, setTimeLeft] = useState({
@@ -130,7 +142,7 @@ export function MotherDayStandard() {
       <nav className="sticky top-10 z-50 glass px-6 md:px-16 py-5 flex justify-between items-center bg-off-white/80">
         <a href="#" className="flex items-center">
           <img 
-            src="https://i.ibb.co/ycWv9sZF/MUSICAL-2.png" 
+            src="https://i.ibb.co/bjkd4Qqz/auralogohorizontal.png" 
             alt="Aura Musical Logo" 
             className="h-8 md:h-12 w-auto object-contain"
             referrerPolicy="no-referrer"
@@ -159,7 +171,7 @@ export function MotherDayStandard() {
             className="fixed inset-0 z-40 bg-off-white flex flex-col items-center justify-center gap-12 lg:hidden pt-20"
           >
             <img 
-              src="https://i.ibb.co/ycWv9sZF/MUSICAL-2.png" 
+              src="https://i.ibb.co/bjkd4Qqz/auralogohorizontal.png" 
               alt="Aura Musical Logo" 
               className="h-12 w-auto object-contain mb-8"
               referrerPolicy="no-referrer"
@@ -173,7 +185,7 @@ export function MotherDayStandard() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section className="relative py-24 md:py-40 px-6 text-center overflow-hidden">
+      <section ref={heroRef} className="relative py-24 md:py-48 px-6 text-center overflow-hidden">
         {/* Cinematic Texture/Background Image Overlay with Parallax */}
         <motion.div 
           style={{ y: yParallax }}
@@ -249,31 +261,54 @@ export function MotherDayStandard() {
       {/* Real Examples Player Section - Glassmorphism Refactor */}
       <section id="exemplos" className="py-24 md:py-40 px-6 bg-off-white">
         <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-24">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-24"
+          >
             <span className="text-gold text-[0.75rem] tracking-[0.4em] uppercase font-black mb-6 block">Prova Emocional</span>
             <h2 className="font-serif text-4xl md:text-7xl font-bold mb-10 leading-tight">Escolha o <em className="italic font-light text-gold">tom</em> da sua homenagem</h2>
             <p className="font-sans text-text-muted max-w-[600px] mx-auto leading-relaxed">Dê o play e sinta a qualidade cinematográfica das nossas produções. Cada música é um pedaço da história de alguém.</p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-4">
-              {examples.map((ex) => (
-                <div 
+              {examples.map((ex, i) => (
+                <motion.div 
                   key={ex.id}
-                  className={`group relative p-8 rounded-2xl border transition-all cursor-pointer flex justify-between items-center shadow-sm ${playingAudio === ex.id ? 'bg-gold/5 border-gold shadow-md' : 'bg-white border-deep-black/5 hover:border-gold/30 hover:shadow-lg'}`}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className={`group relative p-8 rounded-[2rem] border transition-all cursor-pointer flex justify-between items-center ${playingAudio === ex.id ? 'bg-white border-gold shadow-[0_20px_40px_rgba(197,160,89,0.1)] scale-[1.02]' : 'bg-white border-deep-black/5 hover:border-gold/30 hover:shadow-xl'}`}
                   onClick={() => setPlayingAudio(playingAudio === ex.id ? null : ex.id)}
                 >
                   <div className="flex items-center gap-6">
-                    <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${playingAudio === ex.id ? 'bg-gold text-white-pure' : 'bg-gold/10 text-gold group-hover:bg-gold group-hover:text-white-pure'}`}>
-                      {playingAudio === ex.id ? <Pause size={24} fill="currentColor" /> : <Play size={24} fill="currentColor" />}
+                    <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500 ${playingAudio === ex.id ? 'bg-gold text-white-pure rotate-[360deg]' : 'bg-gold/10 text-gold group-hover:bg-gold group-hover:text-white-pure'}`}>
+                      {playingAudio === ex.id ? <Pause size={24} fill="currentColor" /> : <Play size={24} fill="currentColor" className="ml-1" />}
                     </div>
                     <div>
                       <h4 className="font-serif text-xl font-bold mb-1 text-deep-black">{ex.title}</h4>
-                      <p className="text-[0.75rem] font-bold uppercase tracking-widest text-gold">{ex.type} · {ex.genre}</p>
+                      <p className="text-[0.7rem] font-bold uppercase tracking-widest text-gold/60">{ex.type} · {ex.genre}</p>
                     </div>
                   </div>
-                  <span className="text-[0.8rem] text-text-muted font-bold">{ex.duration}</span>
-                </div>
+                  <div className="flex flex-col items-end gap-1">
+                    <span className="text-[0.8rem] text-text-muted font-bold font-mono">{ex.duration}</span>
+                    {playingAudio === ex.id && (
+                      <div className="flex gap-1">
+                        {[1, 2, 3].map(j => (
+                          <motion.div 
+                            key={j}
+                            animate={{ height: [4, 12, 4] }}
+                            transition={{ repeat: Infinity, duration: 0.5, delay: j * 0.1 }}
+                            className="w-0.5 bg-gold"
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
               ))}
             </div>
             
@@ -293,20 +328,29 @@ export function MotherDayStandard() {
       </section>
 
       {/* How it Works - Simplicity */}
-      <section id="processo" className="py-24 md:py-40 px-6 bg-off-white border-y border-deep-black/5">
-        <div className="max-w-[1200px] mx-auto">
+      <section id="processo" className="py-24 md:py-48 px-6 bg-off-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-accent-rose/10 blur-[100px] -translate-y-1/2 translate-x-1/2 rounded-full" />
+        <div className="max-w-[1200px] mx-auto relative z-10">
           <div className="text-center mb-24">
-            <h2 className="font-serif text-4xl md:text-6xl font-bold mb-8">Eternizar um momento é <em className="italic font-light text-gold">simples</em></h2>
+            <span className="text-accent-rose text-[0.7rem] uppercase font-black tracking-[0.3em] mb-4 block">Simplicidade & Arte</span>
+            <h2 className="font-serif text-4xl md:text-7xl font-bold mb-8 leading-tight">Eternizar um momento é <em className="italic font-light text-gold">simples</em></h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
             {steps.map((step, i) => (
-              <div key={i} className="text-center group">
-                <div className="w-24 h-24 bg-deep-black text-white-pure rounded-full flex items-center justify-center font-serif text-4xl font-black mb-10 mx-auto group-hover:bg-gold group-hover:text-deep-black transition-all shadow-lg transform group-hover:scale-110">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="text-center group p-10 rounded-[3rem] hover:bg-white hover:shadow-[0_30px_60px_rgba(0,0,0,0.03)] transition-all bg-transparent"
+              >
+                <div className="w-20 h-20 bg-deep-black text-white-pure rounded-full flex items-center justify-center font-serif text-3xl font-black mb-10 mx-auto group-hover:bg-gold group-hover:text-white-pure transition-all shadow-lg transform group-hover:rotate-[15deg]">
                   {step.num}
                 </div>
-                <h3 className="font-serif text-2xl font-bold mb-6">{step.title}</h3>
-                <p className="text-text-muted leading-relaxed font-light">{step.desc}</p>
-              </div>
+                <h3 className="font-serif text-2xl font-bold mb-6 tracking-tight">{step.title}</h3>
+                <p className="text-text-muted leading-relaxed font-sans text-sm">{step.desc}</p>
+              </motion.div>
             ))}
           </div>
           <div className="mt-24 text-center">
@@ -385,65 +429,118 @@ export function MotherDayStandard() {
       </section>
 
       {/* Form Section */}
-      <section id="criar" ref={formRef} className="py-24 md:py-40 px-6 bg-cream/20">
-        <AnimatePresence>
-          {showForm && (
+      <section id="criar" ref={formRef} className="py-24 md:py-48 px-6 bg-cream/10">
+        <AnimatePresence mode="wait">
+          {!showForm ? (
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="max-w-[700px] mx-auto"
+              key="pre-form"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="max-w-[800px] mx-auto text-center"
             >
-              <div className="text-center mb-20">
-                <span className="text-gold text-[0.8rem] font-black tracking-widest uppercase mb-6 block">Ficha de Inscrição</span>
-                <h2 className="font-serif text-4xl md:text-6xl font-black mb-10">O começo da <br />eternidade</h2>
+              <h2 className="font-serif text-3xl md:text-5xl font-medium mb-10 text-deep-black">Pronto para emocionar?</h2>
+              <button 
+                onClick={() => setShowForm(true)}
+                className="bg-gold text-white-pure px-16 py-8 font-sans text-sm font-black uppercase tracking-widest hover:bg-deep-black transition-all shadow-2xl"
+              >
+                Sim, quero começar agora
+              </button>
+            </motion.div>
+          ) : (
+            <motion.div 
+              key="form"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="max-w-[800px] mx-auto"
+            >
+              <div className="text-center mb-24">
+                <span className="text-accent-rose text-[0.8rem] font-bold tracking-[0.4em] uppercase mb-6 block">Composição Exclusiva</span>
+                <h2 className="font-serif text-4xl md:text-7xl font-black mb-6">Conte-nos <em className="text-gold italic font-light">sobre ela</em></h2>
+                <p className="font-sans text-text-muted">Cada detalhe ajuda nossos artistas a capturar a essência da sua mãe.</p>
               </div>
 
-              <form onSubmit={handleFormSubmit} className="space-y-10 bg-off-white p-8 md:p-16 border border-deep-black/5 shadow-2xl">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">Seu Nome</label>
-                    <input name="userName" required type="text" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" />
+              <form onSubmit={handleFormSubmit} className="space-y-12 bg-off-white p-6 md:p-20 border border-gold/10 shadow-[0_40px_100px_rgba(0,0,0,0.05)] rounded-[2.5rem]">
+                <div className="space-y-12">
+                  <div className="border-b border-gold/10 pb-12">
+                    <h3 className="font-serif text-xl font-bold mb-8 flex items-center gap-4">
+                      <div className="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center text-sm">01</div>
+                      Informações Básicas
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-4">
+                        <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/60 block">Seu Nome</label>
+                        <input name="userName" required type="text" className="w-full bg-transparent border-b-2 border-deep-black/10 p-4 outline-none focus:border-gold transition-all font-serif text-lg" placeholder="Como devemos te chamar?" />
+                      </div>
+                      <div className="space-y-4">
+                        <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/60 block">Nome da Mãe</label>
+                        <input name="motherName" required type="text" className="w-full bg-transparent border-b-2 border-deep-black/10 p-4 outline-none focus:border-gold transition-all font-serif text-lg" placeholder="Nome da sua rainha" />
+                      </div>
+                    </div>
                   </div>
-                  <div className="space-y-3">
-                    <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">Nome da Mãe</label>
-                    <input name="motherName" required type="text" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" />
+
+                  <div className="border-b border-gold/10 pb-12">
+                    <h3 className="font-serif text-xl font-bold mb-8 flex items-center gap-4">
+                      <div className="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center text-sm">02</div>
+                      A História
+                    </h3>
+                    <div className="space-y-4">
+                      <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/60 block">Memórias & Sentimentos</label>
+                      <textarea name="story" rows={4} required className="w-full bg-transparent border-b-2 border-deep-black/10 p-4 outline-none focus:border-gold transition-all font-serif text-lg resize-none" placeholder="Conte-nos momentos, apelidos, cheiros, risadas... o que torna ela única?"></textarea>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="font-serif text-xl font-bold mb-8 flex items-center gap-4">
+                      <div className="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center text-sm">03</div>
+                      Estilo & Contato
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-4">
+                        <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/60 block">Estilo Musical</label>
+                        <select name="style" className="w-full bg-transparent border-b-2 border-deep-black/10 p-4 outline-none focus:border-gold transition-all font-serif text-lg cursor-pointer">
+                          <option>Aura Clássica (Violão & Voz)</option>
+                          <option>MPB Sofisticado</option>
+                          <option>Sertanejo Emocional</option>
+                          <option>Pop Indie Moderno</option>
+                          <option>Piano & Melodia</option>
+                        </select>
+                      </div>
+                      <div className="space-y-4">
+                        <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/60 block">WhatsApp</label>
+                        <input name="whatsapp" required type="tel" className="w-full bg-transparent border-b-2 border-deep-black/10 p-4 outline-none focus:border-gold transition-all font-serif text-lg" placeholder="(XX) XXXXX-XXXX" />
+                      </div>
+                    </div>
+                    <div className="space-y-4 mt-10">
+                      <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/60 block">Seu E-mail</label>
+                      <input name="email" required type="email" className="w-full bg-transparent border-b-2 border-deep-black/10 p-4 outline-none focus:border-gold transition-all font-serif text-lg" placeholder="Para receber sua obra-prima" />
+                    </div>
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">Conte um momento ou história marcante</label>
-                  <textarea name="story" rows={5} required className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold resize-none" placeholder="Ex: Aquele bolo que só ela sabe fazer, uma viagem marcante ou um conselho que mudou sua vida..."></textarea>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">Estilo da Canção</label>
-                    <select name="style" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold cursor-pointer">
-                      <option>MPB / Acústico</option>
-                      <option>Sertanejo Raiz</option>
-                      <option>Pop Romântico</option>
-                      <option>Gospel</option>
-                    </select>
+                <div className="pt-8">
+                  <button 
+                    type="submit" 
+                    disabled={status === 'submitting'}
+                    className="w-full bg-deep-black text-white-pure py-8 md:py-10 font-bold uppercase tracking-[0.5em] text-sm md:text-lg hover:bg-gold hover:text-white-pure transition-all shadow-2xl rounded-2xl relative group overflow-hidden"
+                  >
+                    <span className="relative z-10">{status === 'submitting' ? 'Aguarde...' : 'Eternizar Agora'}</span>
+                    <div className="absolute inset-0 bg-gold translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  </button>
+                  <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-6 text-[0.6rem] text-text-muted uppercase tracking-widest">
+                    <span className="flex items-center gap-2"><Check size={12} className="text-gold" /> Letra aprovada por você</span>
+                    <span className="flex items-center gap-2"><Check size={12} className="text-gold" /> Entrega em até 7 dias</span>
+                    <span className="flex items-center gap-2"><Check size={12} className="text-gold" /> Pagamento Seguro MP</span>
                   </div>
-                  <div className="space-y-3">
-                    <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">WhatsApp de Contato</label>
-                    <input name="whatsapp" required type="tel" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" placeholder="(XX) XXXXX-XXXX" />
+                  
+                  {/* Trust Badges */}
+                  <div className="mt-12 pt-8 border-t border-gold/5 flex flex-wrap justify-center items-center gap-8 grayscale opacity-50 contrast-125">
+                    <img src="https://logodownload.org/wp-content/uploads/2019/06/mercado-pago-logo.png" className="h-4 object-contain" alt="Mercado Pago" />
+                    <img src="https://logodownload.org/wp-content/uploads/2014/07/visa-logo-1.png" className="h-3 object-contain" alt="Visa" />
+                    <img src="https://logodownload.org/wp-content/uploads/2014/07/mastercard-logo.png" className="h-5 object-contain" alt="Mastercard" />
+                    <img src="https://logodownload.org/wp-content/uploads/2020/02/pix-logo-1.png" className="h-4 object-contain" alt="PIX" />
                   </div>
                 </div>
-
-                <div className="space-y-3">
-                  <label className="text-[0.65rem] uppercase tracking-widest font-black text-deep-black/40">Seu Melhor E-mail</label>
-                  <input name="email" required type="email" className="w-full bg-cream/30 border border-deep-black/10 p-5 outline-none focus:border-gold" />
-                </div>
-
-                <button 
-                  type="submit" 
-                  disabled={status === 'submitting'}
-                  className="w-full bg-deep-black text-white-pure py-8 font-black uppercase tracking-[0.4em] text-lg hover:bg-gold hover:text-deep-black transition-all shadow-xl"
-                >
-                  {status === 'submitting' ? 'Aguarde...' : 'Criar Música Agora'}
-                </button>
-                <p className="text-center text-[0.6rem] text-text-muted uppercase tracking-widest">Sua música será enviada em até 7 dias úteis após a aprovação da letra.</p>
               </form>
             </motion.div>
           )}
@@ -456,7 +553,7 @@ export function MotherDayStandard() {
           <div className="col-span-1 md:col-span-2 space-y-8">
             <a href="#" className="flex items-center">
               <img 
-                src="https://i.ibb.co/ycWv9sZF/MUSICAL-2.png" 
+                src="https://i.ibb.co/bjkd4Qqz/auralogohorizontal.png" 
                 alt="Aura Musical Logo" 
                 className="h-10 md:h-16 w-auto object-contain brightness-0 invert" 
                 referrerPolicy="no-referrer"
@@ -497,6 +594,25 @@ export function MotherDayStandard() {
           </div>
         </div>
       </footer>
+
+      {/* Sticky Mobile CTA */}
+      <AnimatePresence>
+        {isCtaVisible && (
+          <motion.div 
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            exit={{ y: 100 }}
+            className="fixed bottom-0 left-0 right-0 z-50 p-4 lg:hidden bg-off-white/80 backdrop-blur-xl border-t border-gold/10"
+          >
+            <button 
+              onClick={abrirFormulario}
+              className="w-full bg-gold text-white-pure py-5 font-bold uppercase tracking-widest text-sm shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-transform"
+            >
+              Criar Música Agora <ArrowRight size={16} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* WhatsApp Float */}
       <motion.a
